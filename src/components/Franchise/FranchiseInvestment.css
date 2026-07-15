@@ -1,0 +1,233 @@
+.fr-invest {
+  position: relative;
+  padding: 64px 0 60px;
+  overflow: hidden;
+  background: var(--color-bg-alt);
+}
+
+@media (min-width: 768px) {
+  .fr-invest {
+    padding: 88px 0 80px;
+  }
+}
+
+@media (min-width: 992px) {
+  .fr-invest {
+    padding: 110px 0 100px;
+  }
+}
+
+.fr-invest__curve {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 70px;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--color-bg);
+}
+
+.fr-invest__curve--top {
+  top: 0;
+  border-radius: 0 0 100% 100% / 0 0 70px 70px;
+}
+
+.fr-invest__curve--bottom {
+  bottom: 0;
+  border-radius: 100% 100% 0 0 / 70px 70px 0 0;
+}
+
+.fr-invest__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.fr-invest__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+.fr-invest__blob--a {
+  width: 420px;
+  height: 420px;
+  top: -180px;
+  left: -160px;
+  background: radial-gradient(circle at 30% 30%, var(--color-gold-light), transparent 70%);
+  opacity: 0.75;
+}
+
+.fr-invest__blob--b {
+  width: 380px;
+  height: 380px;
+  bottom: -180px;
+  right: -150px;
+  background: radial-gradient(circle at 60% 40%, var(--color-primary-light), transparent 70%);
+  opacity: 0.7;
+}
+
+.fr-invest__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.fr-invest__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 44px;
+}
+
+.fr-invest__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  color: var(--color-ink-soft);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-premium), box-shadow var(--dur-fast) var(--ease-premium),
+    background var(--dur-fast) var(--ease-premium), color var(--dur-fast) var(--ease-premium),
+    border-color var(--dur-fast) var(--ease-premium);
+}
+
+.fr-invest__tab:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+}
+
+.fr-invest__tab.is-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  box-shadow: var(--shadow-glow);
+}
+
+.fr-invest__stage {
+  position: relative;
+  margin-top: 36px;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.fr-invest__spotlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 32px 22px;
+  box-shadow: var(--shadow-lift);
+  border: 1px solid var(--color-line-soft);
+}
+
+.fr-invest__medallion {
+  display: grid;
+  place-items: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #b169c4 0%, #7a2e91 55%, #5a2069 100%);
+  box-shadow: var(--shadow-glow);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.fr-invest__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.fr-invest__step {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--color-ink-faint);
+}
+
+.fr-invest__copy h3 {
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+}
+
+.fr-invest__copy p {
+  font-size: 0.98rem;
+  color: var(--color-ink-soft);
+  max-width: 46ch;
+}
+
+.fr-invest__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.fr-invest__dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-line);
+  transition: background var(--dur-fast) var(--ease-premium), transform var(--dur-fast) var(--ease-premium);
+}
+
+.fr-invest__dots span.is-active {
+  background: var(--color-primary);
+  transform: scale(1.3);
+}
+
+.fr-invest__note {
+  max-width: 640px;
+  margin: 48px auto 0;
+  text-align: center;
+  padding: 24px 28px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-light);
+}
+
+.fr-invest__note p {
+  font-size: 0.94rem;
+  color: var(--color-primary-dark);
+  font-weight: 600;
+}
+
+@media (min-width: 576px) {
+  .fr-invest__spotlight {
+    padding: 40px 36px;
+    gap: 22px;
+  }
+}
+
+@media (min-width: 768px) {
+  .fr-invest__spotlight {
+    flex-direction: row;
+    text-align: left;
+    padding: 48px 56px;
+  }
+
+  .fr-invest__copy {
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 992px) {
+  .fr-invest__spotlight {
+    padding: 52px 64px;
+  }
+
+  .fr-invest__medallion {
+    width: 100px;
+    height: 100px;
+  }
+}

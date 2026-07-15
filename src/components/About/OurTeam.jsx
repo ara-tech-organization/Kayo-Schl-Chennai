@@ -1,9 +1,13 @@
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { BookOpenCheck, GraduationCap, RefreshCcw, ShieldCheck } from "lucide-react";
 import SectionHeading from "../common/SectionHeading";
 import { StaggerGroup, StaggerItem } from "../common/Stagger";
 import Reveal from "../common/Reveal";
 import ArtPanel from "../common/ArtPanel";
 import "./OurTeam.css";
+
+const EASE = [0.16, 1, 0.3, 1];
 
 const QUALITIES = [
   {
@@ -29,8 +33,18 @@ const QUALITIES = [
 ];
 
 export default function OurTeam() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const artY = useTransform(scrollYProgress, [0, 1], [-140, 140]);
+
   return (
-    <section className="our-team" id="our-team">
+    <section className="our-team" id="our-team" ref={ref}>
+      <div className="our-team__bg" aria-hidden="true">
+        <span className="our-team__shape our-team__shape--b" />
+        <span className="our-team__shape our-team__shape--c" />
+        <span className="our-team__grain" />
+      </div>
+
       <div className="container our-team__grid">
         <div className="our-team__copy">
           <SectionHeading
@@ -39,6 +53,14 @@ export default function OurTeam() {
             title="Our Team"
             description="A preschool is only as good as its educators. At Kayo International, we take immense pride in our team of dedicated teachers and caregivers who share Veena's passion for early childhood development."
           />
+
+          <Reveal y={16} delay={0.06}>
+            <p className="our-team__lead">
+              We believe that understanding child development, learning psychology, and
+              age-appropriate teaching methodologies is essential to providing the quality of care
+              your child deserves.
+            </p>
+          </Reveal>
 
           <Reveal y={16} delay={0.1}>
             <p className="our-team__note">
@@ -62,10 +84,33 @@ export default function OurTeam() {
           </StaggerGroup>
         </div>
 
-        <Reveal x={30} y={0} delay={0.15} className="our-team__art">
-          <ArtPanel tone="gold" icon={GraduationCap} label="Our Qualified Educators" pop />
-        </Reveal>
+        <motion.div
+          className="our-team__art"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.75, delay: 0.15, ease: EASE }}
+          style={{ y: artY }}
+        >
+          <ArtPanel tone="secondary" icon={GraduationCap} label="Our Qualified Educators" />
+          <span className="sr-only">
+            Qualified early years teachers conducting interactive session at Kayo International
+            Preschool Perungudi
+          </span>
+        </motion.div>
       </div>
+
+      <svg
+        className="our-team__wave"
+        viewBox="0 0 1440 110"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M0,48 C240,96 480,100 720,64 C960,28 1200,10 1440,56 L1440,110 L0,110 Z"
+          fill="var(--color-bg)"
+        />
+      </svg>
     </section>
   );
 }

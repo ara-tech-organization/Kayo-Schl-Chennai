@@ -1,13 +1,21 @@
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Phone, X } from "lucide-react";
+import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import logo from "../../assets/Logo.png";
 import "./Navbar.css";
 
 const LINKS = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
+  {
+    label: "About",
+    to: "/about",
+    children: [
+      { to: "/about", label: "Our Story" },
+      { to: "/curriculum", label: "Curriculum" },
+      { to: "/franchise", label: "Franchise" },
+    ],
+  },
   { to: "/services", label: "Programmes" },
   { to: "/gallery", label: "Gallery" },
 ];
@@ -15,6 +23,10 @@ const LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [dropdown, setDropdown] = useState(null);
+  const [mobileGroup, setMobileGroup] = useState(null);
+  const closeTimer = useRef(null);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -30,6 +42,20 @@ export default function Navbar() {
     };
   }, [open]);
 
+  function openDropdown(label) {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setDropdown(label);
+  }
+
+  function scheduleClose() {
+    closeTimer.current = setTimeout(() => setDropdown(null), 150);
+  }
+
+  function isGroupActive(link) {
+    if (!link.children) return false;
+    return link.children.some((c) => pathname === c.to || pathname.startsWith(c.to + "/"));
+  }
+
   return (
     <header className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <div className="container navbar__inner">
@@ -38,16 +64,66 @@ export default function Navbar() {
         </NavLink>
 
         <nav className="navbar__links" aria-label="Primary">
-          {LINKS.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === "/"}
-              className={({ isActive }) => `navbar__link ${isActive ? "is-active" : ""}`}
-            >
-              {link.label}
-            </NavLink>
-          ))}
+          {LINKS.map((link) =>
+            link.children ? (
+              <div
+                key={link.label}
+                className="navbar__group"
+                onMouseEnter={() => openDropdown(link.label)}
+                onMouseLeave={scheduleClose}
+              >
+                <button
+                  type="button"
+                  className={`navbar__link navbar__link--trigger ${
+                    isGroupActive(link) ? "is-active" : ""
+                  }`}
+                  aria-expanded={dropdown === link.label}
+                  onClick={() => setDropdown((d) => (d === link.label ? null : link.label))}
+                >
+                  {link.label}
+                  <ChevronDown
+                    size={14}
+                    strokeWidth={2.3}
+                    className={`navbar__chevron ${dropdown === link.label ? "is-open" : ""}`}
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {dropdown === link.label && (
+                    <motion.div
+                      className="navbar__dropdown"
+                      initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                      transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      {link.children.map((c) => (
+                        <NavLink
+                          key={c.to}
+                          to={c.to}
+                          className={({ isActive }) =>
+                            `navbar__dropdown-link ${isActive ? "is-active" : ""}`
+                          }
+                          onClick={() => setDropdown(null)}
+                        >
+                          {c.label}
+                        </NavLink>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.to === "/"}
+                className={({ isActive }) => `navbar__link ${isActive ? "is-active" : ""}`}
+              >
+                {link.label}
+              </NavLink>
+            )
+          )}
         </nav>
 
         <div className="navbar__actions">
@@ -80,17 +156,64 @@ export default function Navbar() {
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="container navbar__mobile-inner">
-              {LINKS.map((link) => (
-                <NavLink
-                  key={link.to}
-                  to={link.to}
-                  end={link.to === "/"}
-                  className={({ isActive }) => `navbar__mobile-link ${isActive ? "is-active" : ""}`}
-                  onClick={() => setOpen(false)}
-                >
-                  {link.label}
-                </NavLink>
-              ))}
+              {LINKS.map((link) =>
+                link.children ? (
+                  <div key={link.label} className="navbar__mobile-group">
+                    <button
+                      type="button"
+                      className={`navbar__mobile-link navbar__mobile-link--trigger ${
+                        isGroupActive(link) ? "is-active" : ""
+                      }`}
+                      aria-expanded={mobileGroup === link.label}
+                      onClick={() =>
+                        setMobileGroup((g) => (g === link.label ? null : link.label))
+                      }
+                    >
+                      {link.label}
+                      <ChevronDown
+                        size={16}
+                        className={`navbar__chevron ${
+                          mobileGroup === link.label ? "is-open" : ""
+                        }`}
+                      />
+                    </button>
+                    <AnimatePresence>
+                      {mobileGroup === link.label && (
+                        <motion.div
+                          className="navbar__mobile-submenu"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                          {link.children.map((c) => (
+                            <NavLink
+                              key={c.to}
+                              to={c.to}
+                              className={({ isActive }) =>
+                                `navbar__mobile-sublink ${isActive ? "is-active" : ""}`
+                              }
+                              onClick={() => setOpen(false)}
+                            >
+                              {c.label}
+                            </NavLink>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <NavLink
+                    key={link.to}
+                    to={link.to}
+                    end={link.to === "/"}
+                    className={({ isActive }) => `navbar__mobile-link ${isActive ? "is-active" : ""}`}
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </NavLink>
+                )
+              )}
               <a href="tel:+919884004650" className="navbar__mobile-link">
                 <Phone size={16} /> +91 98840 04650
               </a>

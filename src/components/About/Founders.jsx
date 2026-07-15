@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { GraduationCap, Quote, Rocket, UserRound } from "lucide-react";
 import SectionHeading from "../common/SectionHeading";
 import ArtPanel from "../common/ArtPanel";
@@ -12,7 +12,8 @@ const FOUNDERS = [
     name: "Veena Sundaramurthy",
     role: "Founder & Director, M.A.",
     icon: GraduationCap,
-    tone: "primary",
+    tone: "secondary",
+    alt: "Veena Sundaramurthy, founder of Kayo International Preschool, with children in classroom at Perungudi Chennai centre",
     tags: ["Early Childhood Education", "Child Psychology", "NURTURE Lab Curriculum"],
     quote:
       "Every child deserves a nurturing space where they feel secure, inspired, and encouraged to reach their full potential.",
@@ -26,7 +27,7 @@ const FOUNDERS = [
     name: "Sankara K",
     role: "Co-Founder",
     icon: Rocket,
-    tone: "orange",
+    tone: "secondary",
     tags: ["Bits Pilani", "EdTech Strategy", "Growth & Operations"],
     quote:
       "I partner with school leaders and help them think bigger — turning ambitious goals into reality.",
@@ -40,10 +41,14 @@ const FOUNDERS = [
 
 export default function Founders() {
   const [active, setActive] = useState(0);
-  const founder = FOUNDERS[active];
 
   return (
     <section className="founders" id="founders">
+      <div className="founders__bg" aria-hidden="true">
+        <span className="founders__shape founders__shape--a" />
+        <span className="founders__shape founders__shape--c" />
+      </div>
+
       <div className="container">
         <SectionHeading
           eyebrow="The People Behind Kayo"
@@ -68,46 +73,53 @@ export default function Founders() {
         </div>
 
         <div className="founders__stage">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={founder.name}
-              className="founders__panel"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -18 }}
-              transition={{ duration: 0.5, ease: EASE }}
-            >
-              <div className="founders__art">
-                <ArtPanel tone={founder.tone} icon={UserRound} label={founder.name} pop />
-                <span className="founders__role-chip">
-                  <founder.icon size={15} strokeWidth={2} />
-                  {founder.role}
-                </span>
-              </div>
+          <div className="founders__deck">
+            {FOUNDERS.map((f, i) => (
+              <motion.div
+                key={f.name}
+                className="founders__panel"
+                initial={false}
+                animate={{ opacity: active === i ? 1 : 0, y: active === i ? 0 : 12 }}
+                transition={{ duration: 0.4, ease: EASE }}
+                aria-hidden={active !== i}
+                style={{ pointerEvents: active === i ? "auto" : "none", zIndex: active === i ? 1 : 0 }}
+              >
+                <div className="founders__art">
+                  <ArtPanel tone={f.tone} icon={UserRound} label={f.name} pop />
+                  {f.alt && <span className="sr-only">{f.alt}</span>}
+                  <span className="founders__role-chip">
+                    <f.icon size={15} strokeWidth={2} />
+                    {f.role}
+                  </span>
+                </div>
 
-              <div className="founders__copy">
-                <h3>{founder.name}</h3>
-                <p className="founders__role">{founder.role}</p>
+                <div className="founders__copy">
+                  <h2 className="founders__name">
+                    <span className="sr-only">Meet Our Founders — </span>
+                    {f.name}
+                  </h2>
+                  <p className="founders__role">{f.role}</p>
 
-                <div className="founders__tags">
-                  {founder.tags.map((t) => (
-                    <span key={t}>{t}</span>
+                  <div className="founders__tags">
+                    {f.tags.map((t) => (
+                      <span key={t}>{t}</span>
+                    ))}
+                  </div>
+
+                  <div className="founders__quote">
+                    <Quote size={22} strokeWidth={2} aria-hidden="true" />
+                    <p>&ldquo;{f.quote}&rdquo;</p>
+                  </div>
+
+                  {f.bio.map((para) => (
+                    <p className="founders__bio" key={para.slice(0, 24)}>
+                      {para}
+                    </p>
                   ))}
                 </div>
-
-                <div className="founders__quote">
-                  <Quote size={22} strokeWidth={2} aria-hidden="true" />
-                  <p>&ldquo;{founder.quote}&rdquo;</p>
-                </div>
-
-                {founder.bio.map((para) => (
-                  <p className="founders__bio" key={para.slice(0, 24)}>
-                    {para}
-                  </p>
-                ))}
-              </div>
-            </motion.div>
-          </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
 
           <div className="founders__dots" aria-hidden="true">
             {FOUNDERS.map((f, i) => (

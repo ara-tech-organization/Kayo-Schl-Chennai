@@ -1,17 +1,78 @@
 .our-team {
   position: relative;
-  padding: 100px 0;
-  background: var(--color-bg);
+  padding: 100px 0 0;
+  overflow: hidden;
+  background: var(--color-bg-alt);
+}
+
+.our-team__wave {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 60px;
+  margin-top: 70px;
+}
+
+@media (min-width: 980px) {
+  .our-team__wave {
+    height: 90px;
+  }
+}
+
+.our-team__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.our-team__grain {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(209, 89, 31, 0.08) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.our-team__shape {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.our-team__shape--b {
+  width: 220px;
+  height: 220px;
+  bottom: 8%;
+  right: 20%;
+  border: 22px solid var(--color-gold-light);
+  opacity: 0.6;
+}
+
+.our-team__shape--c {
+  width: 160px;
+  height: 160px;
+  bottom: -8%;
+  left: 4%;
+  background: var(--color-orange-dark);
+  opacity: 0.14;
 }
 
 .our-team__grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 48px;
-  align-items: start;
+  align-items: center;
 }
 
 .our-team__copy .section-heading {
   margin-bottom: 24px;
+}
+
+.our-team__lead {
+  font-size: 1rem;
+  max-width: 56ch;
+  margin-bottom: 20px;
 }
 
 .our-team__note {
@@ -30,12 +91,18 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+  align-items: stretch;
+}
+
+.our-team__grid-cards > div {
+  height: 100%;
 }
 
 .our-team__card {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  height: 100%;
   background: var(--color-surface);
   border: 1px solid var(--color-line-soft);
   border-radius: var(--radius-md);
@@ -56,8 +123,8 @@
   border-radius: 14px;
   display: grid;
   place-items: center;
-  background: var(--color-gold-light);
-  color: var(--color-orange-dark);
+  background: var(--color-secondary-light);
+  color: var(--color-secondary-dark);
 }
 
 .our-team__card h3 {
@@ -91,8 +158,6 @@
     grid-template-columns: 1.2fr 0.8fr;
   }
   .our-team__art {
-    margin-inline: auto 0;
-    position: sticky;
-    top: 110px;
+    margin-inline: auto;
   }
 }

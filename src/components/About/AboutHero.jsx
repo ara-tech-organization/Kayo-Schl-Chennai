@@ -82,6 +82,10 @@ export default function AboutHero() {
           <div className="about-hero__core">
             <Heart size={44} strokeWidth={1.3} />
             <span className="about-hero__core-label">Kayo International</span>
+            <span className="sr-only">
+              Bright nurturing classroom environment at Kayo International Preschool and DayCare
+              Chennai
+            </span>
           </div>
 
           {SATELLITES.map((s, i) => (

@@ -125,7 +125,7 @@
   position: relative;
   width: 320px;
   height: 320px;
-  margin-inline: auto;
+  margin: 0 auto 60px;
   display: grid;
   place-items: center;
 }
@@ -226,7 +226,7 @@
 }
 
 .about-hero__satellite--br {
-  bottom: -8px;
+  bottom: -56px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -275,6 +275,27 @@
 .about-hero__strip-item small {
   font-size: 0.78rem;
   color: var(--color-ink-faint);
+}
+
+@media (max-width: 420px) {
+  .about-hero__medallion {
+    width: 260px;
+    height: 260px;
+  }
+  .about-hero__core {
+    width: 160px;
+    height: 160px;
+  }
+  .about-hero__satellite {
+    min-width: 72px;
+    padding: 8px 10px;
+  }
+  .about-hero__satellite--tl {
+    left: -14px;
+  }
+  .about-hero__satellite--tr {
+    right: -18px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,225 @@
+.four-pillars {
+  position: relative;
+  padding: 64px 0 70px;
+  background: var(--color-bg);
+}
+
+.four-pillars__lead-in {
+  text-align: center;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-top: 8px;
+}
+
+.pillars-zigzag {
+  position: relative;
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.four-pillars__closing {
+  max-width: 780px;
+  margin: 40px auto 0;
+  text-align: center;
+}
+
+.four-pillars__closing p {
+  font-size: 0.98rem;
+}
+
+.pillars-zigzag__line {
+  display: none;
+}
+
+.pillars-zigzag__item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.pillars-zigzag__number {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  box-shadow: var(--shadow-glow);
+}
+
+.pillars-zigzag__item--secondary .pillars-zigzag__number {
+  background: var(--color-secondary-dark);
+}
+
+.pillars-zigzag__item--orange .pillars-zigzag__number {
+  background: var(--color-orange-dark);
+}
+
+.pillars-zigzag__item--featured .pillars-zigzag__number {
+  background: var(--color-primary-dark);
+}
+
+.pillars-zigzag__card {
+  flex: 1;
+  min-width: 0;
+  padding: 24px 24px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-soft);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium),
+    border-color var(--dur-med) var(--ease-premium);
+}
+
+.pillars-zigzag__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+  border-color: transparent;
+}
+
+.pillars-zigzag__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.pillars-zigzag__item--secondary .pillars-zigzag__icon {
+  background: var(--color-secondary-light);
+  color: var(--color-secondary-dark);
+}
+
+.pillars-zigzag__item--orange .pillars-zigzag__icon {
+  background: var(--color-orange-light);
+  color: var(--color-orange-dark);
+}
+
+.pillars-zigzag__card h3 {
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+}
+
+.pillars-zigzag__card p {
+  font-size: 0.92rem;
+}
+
+/* ---- Featured card: Multiple Intelligence Theory ---- */
+
+.pillars-zigzag__item--featured .pillars-zigzag__card {
+  background: radial-gradient(circle at 22% 20%, #b169c4 0%, #7a2e91 55%, #5a2069 100%);
+  border-color: transparent;
+  box-shadow: var(--shadow-lift);
+}
+
+.pillars-zigzag__item--featured .pillars-zigzag__icon {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.pillars-zigzag__item--featured .pillars-zigzag__card h3,
+.pillars-zigzag__item--featured .pillars-zigzag__card p {
+  color: #fff;
+}
+
+.pillars-zigzag__item--featured .pillars-zigzag__card p {
+  opacity: 0.86;
+}
+
+.pillars-zigzag__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #fff;
+  transition: gap var(--dur-fast) var(--ease-premium);
+}
+
+.pillars-zigzag__link:hover {
+  gap: 10px;
+}
+
+@media (min-width: 576px) {
+  .four-pillars {
+    padding: 76px 0 84px;
+  }
+
+  .pillars-zigzag {
+    margin-top: 48px;
+    gap: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .four-pillars {
+    padding: 90px 0 100px;
+  }
+
+  .pillars-zigzag {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .pillars-zigzag__item {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+
+@media (min-width: 992px) {
+  .four-pillars {
+    padding: 100px 0 110px;
+  }
+
+  .pillars-zigzag {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 0;
+    padding-top: 34px;
+  }
+
+  .pillars-zigzag__line {
+    display: block;
+    position: absolute;
+    top: 54px;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: var(--color-line);
+  }
+
+  .pillars-zigzag__item {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 12px;
+  }
+
+  .pillars-zigzag__item:nth-of-type(2n) {
+    margin-top: 52px;
+  }
+
+  .pillars-zigzag__number {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+  }
+
+  .pillars-zigzag__card {
+    width: 100%;
+  }
+}

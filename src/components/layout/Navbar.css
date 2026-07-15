@@ -73,6 +73,111 @@
   color: var(--color-primary-dark);
 }
 
+.navbar__group {
+  position: relative;
+}
+
+.navbar__link--trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar__chevron {
+  transition: transform var(--dur-fast) var(--ease-premium);
+}
+
+.navbar__chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 190px;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-soft);
+  box-shadow: var(--shadow-lift);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.navbar__dropdown::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-line-soft);
+  border-top: 1px solid var(--color-line-soft);
+  border-radius: 3px 0 0 0;
+}
+
+.navbar__dropdown-link {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-ink-soft);
+  transition: background var(--dur-fast) var(--ease-premium), color var(--dur-fast) var(--ease-premium);
+}
+
+.navbar__dropdown-link:hover {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.navbar__dropdown-link.is-active {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.navbar__mobile-group {
+  border-bottom: 1px solid var(--color-line-soft);
+}
+
+.navbar__mobile-link--trigger {
+  width: 100%;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  border-bottom: none;
+  cursor: pointer;
+}
+
+.navbar__mobile-group .navbar__mobile-link--trigger {
+  border-bottom: none;
+}
+
+.navbar__mobile-submenu {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-left: 14px;
+}
+
+.navbar__mobile-sublink {
+  padding: 10px 4px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--color-ink-faint);
+}
+
+.navbar__mobile-sublink.is-active {
+  color: var(--color-primary-dark);
+}
+
 .navbar__actions {
   display: flex;
   align-items: center;

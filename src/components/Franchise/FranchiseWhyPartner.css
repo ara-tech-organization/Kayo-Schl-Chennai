@@ -1,0 +1,135 @@
+.fr-why {
+  position: relative;
+  padding: 64px 0 48px;
+  background: var(--color-bg);
+}
+
+@media (min-width: 768px) {
+  .fr-why {
+    padding: 84px 0 56px;
+  }
+}
+
+@media (min-width: 992px) {
+  .fr-why {
+    padding: 100px 0 60px;
+  }
+}
+
+.fr-why__bento {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.fr-why__card {
+  position: relative;
+  padding: 28px 26px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-soft);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium),
+    border-color var(--dur-med) var(--ease-premium);
+}
+
+.fr-why__card::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  opacity: 0.5;
+  background: var(--color-line-soft);
+  z-index: 0;
+}
+
+.fr-why__card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lift);
+  border-color: transparent;
+}
+
+.fr-why__icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  margin-bottom: 16px;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.fr-why__card h3 {
+  position: relative;
+  z-index: 1;
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+}
+
+.fr-why__card p {
+  position: relative;
+  z-index: 1;
+  font-size: 0.9rem;
+}
+
+.fr-why__card--secondary .fr-why__icon {
+  background: var(--color-secondary-light);
+  color: var(--color-secondary-dark);
+}
+
+.fr-why__card--secondary::after {
+  background: var(--color-secondary-light);
+}
+
+.fr-why__card--gold .fr-why__icon {
+  background: var(--color-gold-light);
+  color: var(--color-orange-dark);
+}
+
+.fr-why__card--gold::after {
+  background: var(--color-gold-light);
+}
+
+.fr-why__card--orange .fr-why__icon {
+  background: var(--color-orange-light);
+  color: var(--color-orange-dark);
+}
+
+.fr-why__card--orange::after {
+  background: var(--color-orange-light);
+}
+
+@media (min-width: 576px) {
+  .fr-why__bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .fr-why__bento {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .fr-why__card--lg {
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 992px) {
+  .fr-why__bento {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 22px;
+  }
+  .fr-why__card--lg {
+    grid-column: span 2;
+  }
+}

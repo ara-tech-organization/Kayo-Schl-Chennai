@@ -1,0 +1,233 @@
+.fr-support {
+  position: relative;
+  padding: 64px 0 72px;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+}
+
+@media (min-width: 768px) {
+  .fr-support {
+    padding: 84px 0 92px;
+  }
+}
+
+@media (min-width: 992px) {
+  .fr-support {
+    padding: 100px 0 110px;
+  }
+}
+
+.fr-support__wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110px;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
+.fr-support__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.fr-support__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+.fr-support__blob--a {
+  width: 400px;
+  height: 400px;
+  top: -160px;
+  right: -160px;
+  background: radial-gradient(circle at 30% 30%, var(--color-primary-light), transparent 70%);
+  opacity: 0.7;
+}
+
+.fr-support__blob--b {
+  width: 360px;
+  height: 360px;
+  bottom: -180px;
+  left: -140px;
+  background: radial-gradient(circle at 60% 40%, var(--color-gold-light), transparent 70%);
+  opacity: 0.75;
+}
+
+.fr-support__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+}
+
+.fr-support__grid .section-heading {
+  margin-bottom: 0;
+}
+
+.fr-support__art-wrap {
+  width: 100%;
+  max-width: 300px;
+  min-height: 220px;
+  margin-inline: auto;
+}
+
+.fr-support__art-wrap .art-panel {
+  height: 100%;
+  min-height: 220px;
+}
+
+.fr-support__accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fr-support__item {
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-soft);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: border-color var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium);
+}
+
+.fr-support__item.is-open {
+  border-color: transparent;
+  box-shadow: var(--shadow-lift);
+}
+
+.fr-support__row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+}
+
+.fr-support__num {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  color: var(--color-line);
+  width: 24px;
+}
+
+.fr-support__icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: var(--color-secondary-light);
+  color: var(--color-secondary-dark);
+  transition: background var(--dur-med) var(--ease-premium), color var(--dur-med) var(--ease-premium);
+}
+
+.fr-support__item:nth-child(2n) .fr-support__icon {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.fr-support__item:nth-child(3n) .fr-support__icon {
+  background: var(--color-gold-light);
+  color: var(--color-orange-dark);
+}
+
+.fr-support__item.is-open .fr-support__icon {
+  background: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.fr-support__title {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  color: var(--color-ink);
+}
+
+.fr-support__toggle {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-bg-alt);
+  color: var(--color-primary-dark);
+}
+
+.fr-support__panel {
+  overflow: hidden;
+}
+
+.fr-support__panel p {
+  padding: 0 22px 24px 86px;
+  font-size: 0.92rem;
+  color: var(--color-ink-soft);
+  max-width: 56ch;
+}
+
+@media (min-width: 576px) {
+  .fr-support__art-wrap {
+    max-width: 340px;
+  }
+}
+
+@media (min-width: 768px) {
+  .fr-support__grid {
+    gap: 28px;
+  }
+
+  .fr-support__art-wrap {
+    max-width: 380px;
+    min-height: 320px;
+  }
+
+  .fr-support__art-wrap .art-panel {
+    min-height: 320px;
+  }
+
+  .fr-support__accordion {
+    gap: 16px;
+  }
+}
+
+@media (min-width: 992px) {
+  .fr-support__grid {
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .fr-support__heading,
+  .fr-support__grid > .section-heading {
+    grid-column: 1 / -1;
+  }
+
+  .fr-support__art-wrap {
+    max-width: 380px;
+    min-height: 480px;
+    margin-inline: auto;
+  }
+
+  .fr-support__art-wrap .art-panel {
+    min-height: 480px;
+  }
+
+  .fr-support__accordion {
+    gap: 16px;
+  }
+}
