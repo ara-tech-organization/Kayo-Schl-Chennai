@@ -1,0 +1,86 @@
+.curriculum {
+  position: relative;
+  padding: 40px 0 120px;
+}
+
+.curriculum__bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60px;
+  bottom: 0;
+  background: var(--color-secondary-light);
+  border-radius: 0 0 120px 0;
+  z-index: 0;
+}
+
+.curriculum__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 48px;
+  padding-top: 80px;
+  align-items: center;
+}
+
+.curriculum__visual {
+  aspect-ratio: 5 / 4;
+}
+
+.curriculum__content .section-heading {
+  margin-bottom: 40px;
+}
+
+.curriculum__pillars {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.curriculum__pillar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium);
+}
+
+.curriculum__pillar:hover {
+  transform: translateY(-5px) translateX(4px);
+  box-shadow: var(--shadow-lift);
+}
+
+.curriculum__pillar-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: var(--color-secondary-light);
+  color: var(--color-secondary-dark);
+}
+
+.curriculum__pillar h3 {
+  font-size: 1.06rem;
+  margin-bottom: 4px;
+}
+
+.curriculum__pillar p {
+  font-size: 0.9rem;
+}
+
+@media (min-width: 720px) {
+  .curriculum__pillars {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 980px) {
+  .curriculum__grid {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+}

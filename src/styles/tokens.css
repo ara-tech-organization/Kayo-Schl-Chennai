@@ -1,0 +1,54 @@
+:root {
+  /* ---- Color: warm, light, premium ---- */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f4eee5;
+  --color-bg-deep: #ecdfcb;
+  --color-surface: #ffffff;
+
+  --color-primary: #922b8d;
+  --color-primary-dark: #6e1f6a;
+  --color-primary-light: #f3e1f2;
+
+  --color-secondary: #9ccb3b;
+  --color-secondary-dark: #5f8a1f;
+  --color-secondary-light: #eaf3d8;
+
+  --color-gold: #f8bc26;
+  --color-gold-light: #fdf0cd;
+
+  --color-orange: #ee7233;
+  --color-orange-dark: #d1591f;
+  --color-orange-light: #ffe4cf;
+
+  --color-ink: #26231d;
+  --color-ink-soft: #5c574c;
+  --color-ink-faint: #8b8577;
+
+  --color-line: #ecdfcd;
+  --color-line-soft: #f3ead9;
+
+  /* ---- Type ---- */
+  --font-display: "Capriola", "Poppins", "Segoe UI", sans-serif;
+  --font-body: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  --font-accent: "Love Ya Like A Sister", cursive;
+
+  /* ---- Shape ---- */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+
+  /* ---- Shadow ---- */
+  --shadow-soft: 0 10px 30px -12px rgba(38, 35, 29, 0.14);
+  --shadow-lift: 0 24px 60px -20px rgba(38, 35, 29, 0.24);
+  --shadow-glow: 0 8px 24px -8px rgba(146, 43, 141, 0.35);
+
+  /* ---- Motion ---- */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 0.25s;
+  --dur-med: 0.55s;
+  --dur-slow: 0.9s;
+
+  /* ---- Layout ---- */
+  --container-w: 1240px;
+}

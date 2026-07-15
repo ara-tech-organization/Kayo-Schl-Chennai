@@ -1,0 +1,43 @@
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.section-heading--center {
+  align-items: center;
+  text-align: center;
+}
+
+.section-heading--left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.9rem, 3.6vw, 2.85rem);
+  max-width: 46ch;
+}
+
+.section-heading--center h2 {
+  margin-inline: auto;
+}
+
+.section-heading__desc {
+  max-width: 62ch;
+  font-size: 1.06rem;
+}
+
+.section-heading--light h2,
+.section-heading--light .eyebrow {
+  color: #fff;
+}
+
+.section-heading--light .eyebrow::before {
+  background: #fff;
+}
+
+.section-heading--light .section-heading__desc {
+  color: rgba(255, 255, 255, 0.82);
+}

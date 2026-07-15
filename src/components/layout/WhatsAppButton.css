@@ -1,0 +1,38 @@
+.whatsapp-fab {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 90;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25b357;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 14px 30px -8px rgba(37, 179, 87, 0.55);
+}
+
+.whatsapp-fab svg {
+  width: 26px;
+  height: 26px;
+}
+
+.whatsapp-fab__ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(37, 179, 87, 0.4);
+  animation: whatsapp-pulse 2.4s var(--ease-premium) infinite;
+}
+
+@keyframes whatsapp-pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
