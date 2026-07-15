@@ -1,0 +1,107 @@
+.fc-benefits {
+  position: relative;
+  padding: 64px 0 56px;
+  background: var(--color-bg-alt);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .fc-benefits {
+    padding: 84px 0 68px;
+  }
+}
+
+@media (min-width: 992px) {
+  .fc-benefits {
+    padding: 100px 0 80px;
+  }
+}
+
+.fc-benefits__marquee {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+.fc-benefits__row {
+  overflow: hidden;
+}
+
+.fc-benefits__track {
+  display: flex;
+  width: max-content;
+  gap: 16px;
+  animation: fc-marquee 32s linear infinite;
+}
+
+.fc-benefits__row--reverse .fc-benefits__track {
+  animation-direction: reverse;
+  animation-duration: 38s;
+}
+
+.fc-benefits__row:hover .fc-benefits__track {
+  animation-play-state: paused;
+}
+
+.fc-benefits__pill {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-soft);
+  box-shadow: var(--shadow-soft);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  white-space: nowrap;
+  transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium),
+    color var(--dur-med) var(--ease-premium);
+}
+
+.fc-benefits__pill:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: var(--shadow-lift);
+  color: var(--color-primary-dark);
+}
+
+.fc-benefits__pill-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  flex-shrink: 0;
+}
+
+.fc-benefits__pill:nth-child(3n) .fc-benefits__pill-icon {
+  background: var(--color-secondary-light);
+  color: var(--color-secondary-dark);
+}
+
+.fc-benefits__pill:nth-child(3n + 1) .fc-benefits__pill-icon {
+  background: var(--color-gold-light);
+  color: var(--color-orange-dark);
+}
+
+@keyframes fc-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fc-benefits__track {
+    animation: none;
+  }
+}

@@ -1,0 +1,100 @@
+import {
+  HeartHandshake,
+  Moon,
+  Droplets,
+  UserCheck,
+  MessageCircleHeart,
+  Sparkles,
+  Users,
+  Apple,
+  Baby,
+  CalendarX2,
+  BandageIcon,
+} from "lucide-react";
+
+export const POLICIES_GROUP_ONE = [
+  {
+    icon: HeartHandshake,
+    title: "Settling In",
+    tagline: "Gentle Starts for Every Child",
+    text: "We encourage parents to stay with their child for an agreed period during the initial days. This gradual approach helps children become familiar with their new environment, build trust with their teachers, and settle in at their own comfortable pace. Every child transitions differently, and we personalise the process to suit individual needs.",
+    tone: "primary",
+    size: "lg",
+  },
+  {
+    icon: Moon,
+    title: "Rest Areas",
+    tagline: "Quiet Spaces to Recharge",
+    text: "Both our nursery and preschool feature quiet, carpeted rest areas with soft cushions where children can relax whenever they need. Whether they choose to nap or engage in quiet activities, our soothing environment ensures every child gets the downtime they need to recharge during the day.",
+    tone: "secondary",
+  },
+  {
+    icon: Droplets,
+    title: "Health Policy",
+    tagline: "Hygiene First, Always",
+    text: "We take every precaution to prevent the spread of infection among children. Our premises are equipped with hot water, liquid hand wash, sanitisers, and paper towels — all readily available throughout the day. Classrooms and play areas are sanitised daily using child-safe disinfectants, and all staff hold current paediatric first aid certifications.",
+    tone: "gold",
+  },
+  {
+    icon: UserCheck,
+    title: "Children Collection Policy",
+    tagline: "Your Child's Safety, Our Priority",
+    text: "Children are never released to anyone other than their parents or a pre-authorised adult named in advance. Anyone collecting a child on behalf of a parent must present valid identification for verification. We also request that parents collect their child on time, as late pickups can cause unnecessary distress.",
+    tone: "orange",
+    size: "lg",
+  },
+  {
+    icon: MessageCircleHeart,
+    title: "Comments & Complaints",
+    tagline: "We Are Always Listening",
+    text: "If you have any concern about your child's experience, please speak to their class teacher first. Most matters are resolved quickly through open conversation. If a concern remains unresolved, it will be escalated to our Centre Head within 5 working days for a thorough review and satisfactory resolution.",
+    tone: "secondary",
+  },
+  {
+    icon: Sparkles,
+    title: "Behaviour Management",
+    tagline: "Positive Guidance, Patient Support",
+    text: "We recognise that challenging behaviour is a natural part of early childhood development. Our educators use positive guidance techniques — redirecting, modelling good behaviour, and helping children build self-regulation skills. If outside support is ever needed, we communicate proactively with parents and recommend appropriate specialists.",
+    tone: "primary",
+  },
+];
+
+export const POLICIES_GROUP_TWO = [
+  {
+    icon: Users,
+    title: "Equal Opportunities",
+    tagline: "Every Child Welcome",
+    text: "At KAYO INTERNATIONAL, we welcome all children and families regardless of race, religion, gender, ability, or background. We are committed to providing an inclusive environment where every child feels valued, respected, and supported to reach their full potential. Our staff are trained to recognise and celebrate diversity in all its forms, ensuring equal access to learning and participation for every child in our care.",
+    tone: "primary",
+    size: "lg",
+  },
+  {
+    icon: Apple,
+    title: "Healthy Eating Policy",
+    tagline: "Good Food, Good Habits",
+    text: "We encourage healthy eating habits from the earliest age by offering balanced, nutritious meals and limiting processed foods and sugary snacks. Our menu is planned to support children's growth, energy, and concentration throughout the day. Parents are asked not to send unhealthy snacks or sugary drinks from home, as we work together to build positive food habits that last a lifetime.",
+    tone: "secondary",
+  },
+  {
+    icon: Baby,
+    title: "Toilet Training",
+    tagline: "Supporting Independence with Patience",
+    text: "We work with parents to support toilet training at a pace that suits each child's individual readiness. Our educators provide gentle encouragement and never pressure children, understanding that every child develops this skill at their own time. Parents are asked to keep us informed about their child's toilet training progress at home so we can maintain consistency between home and preschool.",
+    tone: "gold",
+  },
+  {
+    icon: CalendarX2,
+    title: "Absence & Sickness",
+    tagline: "Keeping Us Informed",
+    text: "If your child is unable to attend due to illness or any other reason, we kindly request that parents inform us as early as possible. This helps us maintain accurate attendance records and plan accordingly for the day. For prolonged absences, parents should contact the Centre Head to discuss their child's return and any support needed to help them settle back in smoothly.",
+    tone: "orange",
+  },
+  {
+    icon: BandageIcon,
+    title: "Accident & Injury",
+    tagline: "Immediate Care, Clear Communication",
+    text: "Despite all precautions, minor bumps and scrapes can happen during active play. All staff are trained in paediatric first aid and respond to any accident immediately with appropriate care. Parents are informed of any incident — no matter how small — through our daily communication system or by phone if the injury requires closer attention. A detailed accident report is recorded and shared with parents for their records.",
+    tone: "secondary",
+    size: "lg",
+  },
+];

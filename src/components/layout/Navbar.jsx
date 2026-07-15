@@ -16,8 +16,16 @@ const LINKS = [
       { to: "/franchise", label: "Franchise" },
     ],
   },
-  { to: "/services", label: "Programmes" },
-  { to: "/gallery", label: "Gallery" },
+  {
+    label: "Careers",
+    to: "/careers",
+    children: [
+      { to: "/careers", label: "Job Openings" },
+      { to: "/family-connect", label: "Family Connect" },
+      { to: "/policies", label: "Policies" },
+    ],
+  },
+  { to: "/contact-us", label: "Contact" },
 ];
 
 export default function Navbar() {

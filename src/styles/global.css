@@ -20,6 +20,10 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  padding-top: 82px;
+}
+
 img {
   max-width: 100%;
   display: block;

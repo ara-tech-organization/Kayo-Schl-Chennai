@@ -1,0 +1,124 @@
+.pol-cta {
+  padding: 90px 0 110px;
+  background: var(--color-bg);
+}
+
+.pol-cta__grid {
+  display: grid;
+  gap: 40px;
+}
+
+.pol-cta__intro .eyebrow {
+  color: var(--color-primary-dark);
+}
+
+.pol-cta__intro h2 {
+  font-size: clamp(1.9rem, 3.6vw, 2.5rem);
+  margin: 14px 0 18px;
+  max-width: 18ch;
+  color: var(--color-primary-dark);
+}
+
+.pol-cta__intro p {
+  max-width: 56ch;
+  font-size: 1rem;
+  margin-bottom: 14px;
+}
+
+.pol-cta__call {
+  margin-top: 14px;
+}
+
+.pol-cta__card-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.pol-cta__card {
+  position: relative;
+  width: 100%;
+  padding: 36px 30px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lift);
+  border: 1px solid var(--color-line-soft);
+  transition: transform var(--dur-med) var(--ease-premium);
+}
+
+.pol-cta__card:hover {
+  transform: translateY(-6px);
+}
+
+.pol-cta__card-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  margin-bottom: 18px;
+}
+
+.pol-cta__card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.pol-cta__card-text {
+  font-size: 0.92rem;
+  margin-bottom: 24px;
+}
+
+.pol-cta__point {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-alt);
+  margin-bottom: 18px;
+}
+
+.pol-cta__point span {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--color-surface);
+  color: var(--color-secondary-dark);
+  box-shadow: var(--shadow-soft);
+}
+
+.pol-cta__point strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.96rem;
+  color: var(--color-ink);
+}
+
+.pol-cta__point p {
+  font-size: 0.84rem;
+  margin: 2px 0 0;
+}
+
+.pol-cta__phone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--color-ink-soft);
+}
+
+.pol-cta__phone strong {
+  color: var(--color-primary-dark);
+}
+
+@media (min-width: 992px) {
+  .pol-cta__grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+  }
+}

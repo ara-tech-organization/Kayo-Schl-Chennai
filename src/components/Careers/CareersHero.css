@@ -1,0 +1,215 @@
+.cr-hero {
+  position: relative;
+  padding: 48px 0 64px;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+}
+
+.cr-hero__inner {
+  position: relative;
+  display: grid;
+  gap: 56px;
+  align-items: center;
+}
+
+.cr-hero__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 14px;
+}
+
+.cr-hero__crumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-ink-faint);
+  margin-bottom: 2px;
+}
+
+.cr-hero__crumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--color-ink-soft);
+  transition: color var(--dur-fast) var(--ease-premium);
+}
+
+.cr-hero__crumb a:hover {
+  color: var(--color-primary-dark);
+}
+
+.cr-hero__title {
+  font-size: clamp(2rem, 4.6vw, 3rem);
+  max-width: 16ch;
+  line-height: 1.14;
+}
+
+.cr-hero__lead {
+  font-size: 1.02rem;
+  max-width: 52ch;
+}
+
+.cr-hero__sub {
+  font-size: 0.94rem;
+  max-width: 50ch;
+  color: var(--color-ink-faint);
+}
+
+.cr-hero__cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.cr-hero__visual {
+  position: relative;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cr-hero__glow {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 55% 40%, var(--color-primary-light), transparent 65%),
+    radial-gradient(circle at 30% 75%, var(--color-secondary-light), transparent 60%),
+    radial-gradient(circle at 75% 80%, var(--color-gold-light), transparent 55%);
+  opacity: 0.9;
+}
+
+.cr-hero__badge {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--color-surface);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  box-shadow: var(--shadow-glow);
+  z-index: 3;
+}
+
+.cr-hero__badge::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  border: 1.5px solid var(--color-primary);
+  opacity: 0.5;
+  animation: cr-hero-pulse 2.2s ease-out infinite;
+}
+
+@keyframes cr-hero-pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+.cr-hero__float {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 168px;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-soft);
+  box-shadow: var(--shadow-lift);
+  transition: rotate var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium);
+  cursor: default;
+  z-index: 2;
+}
+
+.cr-hero__float:hover {
+  rotate: 0deg;
+  box-shadow: 0 30px 60px -18px rgba(38, 35, 29, 0.32);
+  z-index: 4;
+}
+
+.cr-hero__float-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.cr-hero__float strong {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--color-ink);
+}
+
+.cr-hero__float span:last-child {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--color-ink-soft);
+}
+
+.cr-hero__float--secondary .cr-hero__float-icon {
+  background: var(--color-secondary-light);
+  color: var(--color-secondary-dark);
+}
+
+.cr-hero__float--gold .cr-hero__float-icon {
+  background: var(--color-gold-light);
+  color: var(--color-orange-dark);
+}
+
+@media (min-width: 640px) {
+  .cr-hero__visual {
+    min-height: 380px;
+  }
+}
+
+@media (min-width: 768px) {
+  .cr-hero {
+    padding: 64px 0 78px;
+  }
+}
+
+@media (min-width: 992px) {
+  .cr-hero {
+    padding: 84px 0 96px;
+  }
+
+  .cr-hero__inner {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 40px;
+  }
+
+  .cr-hero__lead {
+    font-size: 1.06rem;
+  }
+
+  .cr-hero__visual {
+    min-height: 440px;
+  }
+
+  .cr-hero__float {
+    width: 190px;
+  }
+}

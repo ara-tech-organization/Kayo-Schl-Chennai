@@ -13,6 +13,7 @@ export default function Reveal({
   className = "",
   once = true,
   amount = 0.2,
+  ...rest
 }) {
   const Component = motion[as] || motion.div;
   return (
@@ -22,6 +23,7 @@ export default function Reveal({
       whileInView={{ opacity: 1, y: 0, x: 0, scale: 1 }}
       viewport={{ once, amount }}
       transition={{ duration, delay, ease: EASE }}
+      {...rest}
     >
       {children}
     </Component>

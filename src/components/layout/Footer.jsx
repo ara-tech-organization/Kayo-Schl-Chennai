@@ -32,6 +32,8 @@ export default function Footer() {
           <NavLink to="/curriculum">Curriculum</NavLink>
           <NavLink to="/services">Programmes</NavLink>
           <NavLink to="/gallery">Gallery</NavLink>
+          <NavLink to="/careers">Careers</NavLink>
+          <NavLink to="/contact-us">Contact Us</NavLink>
         </div>
 
         <div className="footer__col">

@@ -3,6 +3,10 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import CurriculumPage from "./pages/CurriculumPage";
 import FranchisePage from "./pages/FranchisePage";
+import PoliciesPage from "./pages/PoliciesPage";
+import CareersPage from "./pages/CareersPage";
+import FamilyConnectPage from "./pages/FamilyConnectPage";
+import ContactPage from "./pages/ContactPage";
 import ComingSoonPage from "./pages/ComingSoonPage";
 
 function App() {
@@ -12,6 +16,10 @@ function App() {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/curriculum" element={<CurriculumPage />} />
       <Route path="/franchise" element={<FranchisePage />} />
+      <Route path="/policies" element={<PoliciesPage />} />
+      <Route path="/careers" element={<CareersPage />} />
+      <Route path="/family-connect" element={<FamilyConnectPage />} />
+      <Route path="/contact-us" element={<ContactPage />} />
       <Route
         path="/services"
         element={
