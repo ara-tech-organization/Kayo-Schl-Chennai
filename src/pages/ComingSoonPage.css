@@ -1,6 +1,24 @@
 .coming-soon {
-  padding: 140px 0 160px;
+  padding: 76px 0 88px;
   background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
+}
+
+@media (min-width: 576px) {
+  .coming-soon {
+    padding: 96px 0 112px;
+  }
+}
+
+@media (min-width: 768px) {
+  .coming-soon {
+    padding: 116px 0 136px;
+  }
+}
+
+@media (min-width: 992px) {
+  .coming-soon {
+    padding: 140px 0 160px;
+  }
 }
 
 .coming-soon__inner {
@@ -14,9 +32,9 @@
 }
 
 .coming-soon__icon {
-  width: 68px;
-  height: 68px;
-  border-radius: 22px;
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
   display: grid;
   place-items: center;
   background: linear-gradient(150deg, var(--color-primary), var(--color-primary-dark));
@@ -25,8 +43,21 @@
 }
 
 .coming-soon__icon svg {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
+}
+
+@media (min-width: 576px) {
+  .coming-soon__icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 22px;
+  }
+
+  .coming-soon__icon svg {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .coming-soon h1 {

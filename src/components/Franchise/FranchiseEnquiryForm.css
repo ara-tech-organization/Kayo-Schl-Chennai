@@ -179,6 +179,27 @@
   color: var(--color-ink);
 }
 
+@media (max-width: 991px) {
+  .fr-enquiry__intro {
+    text-align: center;
+  }
+
+  .fr-enquiry__intro h2,
+  .fr-enquiry__intro p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .fr-enquiry__point {
+    justify-content: center;
+    text-align: left;
+  }
+
+  .fr-enquiry__call {
+    margin: 0 auto;
+  }
+}
+
 @media (min-width: 576px) {
   .fr-enquiry__row {
     grid-template-columns: 1fr 1fr;

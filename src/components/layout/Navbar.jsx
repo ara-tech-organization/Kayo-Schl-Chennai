@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import logo from "../../assets/Logo.png";
@@ -139,9 +139,9 @@ export default function Navbar() {
             <Phone size={16} strokeWidth={2} />
             <span>+91 98840 04650</span>
           </a>
-          <a href="#enquiry" className="btn btn-primary navbar__cta">
+          <Link to="/contact-us" className="btn btn-primary navbar__cta">
             Start Today
-          </a>
+          </Link>
           <button
             type="button"
             className="navbar__burger"
@@ -225,9 +225,9 @@ export default function Navbar() {
               <a href="tel:+919884004650" className="navbar__mobile-link">
                 <Phone size={16} /> +91 98840 04650
               </a>
-              <a href="#enquiry" className="btn btn-primary" onClick={() => setOpen(false)}>
+              <Link to="/contact-us" className="btn btn-primary" onClick={() => setOpen(false)}>
                 Start Today
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

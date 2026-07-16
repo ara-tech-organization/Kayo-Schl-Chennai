@@ -11,6 +11,18 @@
   max-width: 900px;
 }
 
+@media (max-width: 767.98px) {
+  .pol-carousel__head .section-heading--left {
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .pol-carousel__head .section-heading--left h2 {
+    margin-inline: auto;
+  }
+}
+
 .pol-carousel__facts {
   padding: 18px 22px;
   border-radius: 20px;

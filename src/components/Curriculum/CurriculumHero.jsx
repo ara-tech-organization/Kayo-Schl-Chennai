@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Home, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import "./CurriculumHero.css";
+import heroBg from "../../assets/cirrculum.png";
 
 const EASE = [0.16, 1, 0.3, 1];
 
@@ -18,9 +19,16 @@ const LETTERS = [
 
 export default function CurriculumHero() {
   const [active, setActive] = useState(null);
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["-18%", "18%"]);
 
   return (
-    <section className="curr-hero">
+    <section className="curr-hero" ref={ref}>
+      <div className="curr-hero__bg" aria-hidden="true">
+        <motion.img src={heroBg} alt="" className="curr-hero__bg-img" style={{ y: bgY }} />
+        <span className="curr-hero__bg-overlay" />
+      </div>
       <div className="curr-hero__backdrop" aria-hidden="true">
         <span className="curr-hero__blob curr-hero__blob--a" />
         <span className="curr-hero__blob curr-hero__blob--b" />
@@ -61,12 +69,14 @@ export default function CurriculumHero() {
           transition={{ duration: 0.75, delay: 0.16, ease: EASE }}
         >
           At KAYO International, we believe every child is born with extraordinary potential. Our
-          NURTURE Lab curriculum is an innovative fusion of Montessori methodology, STEM education,
-          play-based learning and Howard Gardner&rsquo;s Multiple Intelligence Theory, thoughtfully
-          designed to unlock that potential from the earliest years. Serving families across
-          Perungudi, OMR, Thoraipakkam and Sholinganallur, we have spent over a decade refining a
-          preschool curriculum that doesn&rsquo;t just prepare children for primary school, but
-          instills a lifelong love of learning.
+          NURTURE Lab curriculum in Perungudi is an innovative fusion of Montessori methodology,
+          STEM education, play-based learning and Howard Gardner&rsquo;s Multiple Intelligence
+          Theory in Perungudi, thoughtfully designed to unlock that potential from the earliest
+          years. As a Montessori preschool Chennai families trust for a genuine STEM learning
+          preschool in Perungudi experience, serving families across Perungudi, OMR, Thoraipakkam
+          and Sholinganallur, we have spent over a decade refining a preschool curriculum that
+          doesn&rsquo;t just prepare children for primary school, but instills a lifelong love of
+          learning.
         </motion.p>
 
         <motion.p

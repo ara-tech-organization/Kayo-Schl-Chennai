@@ -10,8 +10,8 @@ const CONTACT_SCHEMA = {
   name: "KAYO International Preschool - Perungudi",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "No.3, 1st Cross Street, Rajiv Nagar, Perungudi",
-    addressLocality: "Chennai",
+    streetAddress: "No.3, 1st Cross Street, Rajiv Nagar",
+    addressLocality: "Perungudi",
     addressRegion: "Tamil Nadu",
     postalCode: "600096",
     addressCountry: "IN",

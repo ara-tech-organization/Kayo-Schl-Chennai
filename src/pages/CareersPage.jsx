@@ -9,20 +9,32 @@ import useSeo from "../hooks/useSeo";
 const CAREERS_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "JobPosting",
-  title: "Preschool Teacher & Staff Careers",
+  title: "Preschool Teacher",
+  description:
+    "Join Team Kayo as a Preschool Teacher at our Perungudi, Chennai centre. Deliver our NURTURE Lab curriculum in a supportive, professional environment with ongoing training and career growth.",
   hiringOrganization: {
-    "@type": "Preschool",
+    "@type": "Organization",
     name: "Kayo International Preschool and DayCare",
-    sameAs: "https://www.kayointernational.in/",
+    sameAs: "https://kayointernational.in",
   },
   jobLocation: {
     "@type": "Place",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Perungudi, Chennai",
-      addressRegion: "Tamil Nadu",
+      addressLocality: "Perungudi",
+      addressRegion: "Chennai",
       addressCountry: "IN",
     },
+  },
+  employmentType: "FULL_TIME",
+  qualifications: "Bachelor's degree in Early Years Education or equivalent",
+  industry: "Early Childhood Education",
+  datePosted: "2026-07-01",
+  validThrough: "2026-12-31",
+  applicationContact: {
+    "@type": "ContactPoint",
+    contactType: "Recruitment",
+    availableLanguage: ["English", "Tamil"],
   },
 };
 

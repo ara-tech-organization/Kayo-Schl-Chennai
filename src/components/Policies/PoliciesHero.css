@@ -246,6 +246,26 @@
   top: 8%;
 }
 
+@media (max-width: 767.98px) {
+  .pol-hero__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .pol-hero__crumb,
+  .pol-hero__actions,
+  .pol-hero__stats {
+    justify-content: center;
+  }
+
+  .pol-hero__title,
+  .pol-hero__lead {
+    margin-inline: auto;
+  }
+}
+
 @media (min-width: 576px) {
   .pol-hero {
     padding: 48px 0 72px;

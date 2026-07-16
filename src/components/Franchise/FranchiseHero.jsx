@@ -65,9 +65,11 @@ export default function FranchiseHero() {
           Are you an aspiring entrepreneur looking for a meaningful business venture in the rapidly
           growing early childhood education sector? Kayo International welcomes passionate
           individuals to join our expanding family through our preschool franchise opportunity in
-          India. With over a decade of trusted experience, a proven NURTURE Lab curriculum, and a
-          reputation built on genuine parent trust, we offer franchise partners a pathway to build
-          a successful, rewarding preschool business.
+          India. With over a decade of trusted experience as the best preschool in Perungudi OMR
+          Chennai, a proven NURTURE Lab curriculum, and a reputation built on genuine parent trust,
+          we offer franchise partners a pathway to build a successful, rewarding preschool business
+          &mdash; the same trusted name families search for when looking for a Montessori daycare
+          near me in Perungudi.
         </motion.p>
 
         <motion.div

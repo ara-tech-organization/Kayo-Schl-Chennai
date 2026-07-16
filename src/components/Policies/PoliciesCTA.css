@@ -29,6 +29,20 @@
   margin-top: 14px;
 }
 
+@media (max-width: 767.98px) {
+  .pol-cta__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .pol-cta__intro h2,
+  .pol-cta__intro p {
+    margin-inline: auto;
+  }
+}
+
 .pol-cta__card-wrap {
   display: flex;
   align-items: center;

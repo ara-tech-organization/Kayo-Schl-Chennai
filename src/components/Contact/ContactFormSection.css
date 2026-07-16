@@ -236,15 +236,76 @@
 }
 
 @media (max-width: 575.98px) {
+  .contact-form-section {
+    padding: 28px 0 70px;
+  }
+  .contact-form-section__grid {
+    gap: 36px;
+  }
   .contact-info__card {
-    padding: 32px 24px 28px;
+    padding: 28px 20px 22px;
+  }
+  .contact-info__card h2 {
+    margin: 8px 0 6px;
+  }
+  .contact-info__points {
+    justify-content: flex-start;
+  }
+  .contact-info__point {
+    gap: 12px;
+    padding: 12px 0;
+  }
+  .contact-info__point span {
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+  }
+  .contact-info__point span svg {
+    width: 18px;
+    height: 18px;
+  }
+  .contact-info__point strong {
+    font-size: 0.88rem;
+  }
+  .contact-info__point p {
+    font-size: 0.84rem;
+    line-height: 1.45;
   }
   .contact-form-card {
-    padding: 28px 22px;
+    padding: 22px 18px;
   }
   .contact-info__floating {
-    margin: -26px 14px 0;
-    padding: 14px 16px;
+    margin: -22px 10px 0;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+  .contact-info__floating span {
+    width: 36px;
+    height: 36px;
+  }
+  .contact-form h3 {
+    font-size: 1.2rem;
+    margin: 6px 0 6px;
+  }
+  .contact-form__hint {
+    font-size: 0.84rem;
+    margin-bottom: 16px;
+  }
+  .contact-form {
+    gap: 12px;
+  }
+  .contact-form__row {
+    gap: 12px;
+  }
+  .contact-form label,
+  .contact-form__full {
+    gap: 5px;
+  }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    padding: 10px 12px;
+    font-size: 0.9rem;
   }
 }
 

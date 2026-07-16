@@ -209,7 +209,7 @@
   color: var(--color-surface);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 576px) {
   .fr-process__stage {
     height: 320px;
   }

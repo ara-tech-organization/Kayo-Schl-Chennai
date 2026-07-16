@@ -219,7 +219,7 @@
   transform: scale(1.3);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 992px) {
   .founders__stage {
     padding: 48px;
   }

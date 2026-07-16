@@ -7,8 +7,8 @@ import "./CareersHero.css";
 const EASE = [0.16, 1, 0.3, 1];
 
 const BADGES = [
-  { icon: Star, value: "4.9★", label: "Google Rating", top: "10%", left: "-8%", rotate: -6 },
-  { icon: ShieldCheck, value: "10+", label: "Years Trusted", top: "72%", left: "58%", rotate: 5 },
+  { icon: Star, value: "4.9★", label: "Google Rating", top: "10%", left: "-2%", rotate: -6 },
+  { icon: ShieldCheck, value: "10+", label: "Years Trusted", top: "70%", left: "54%", rotate: 5 },
 ];
 
 export default function CareersHero() {

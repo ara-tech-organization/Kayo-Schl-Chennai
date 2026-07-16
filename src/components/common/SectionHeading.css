@@ -11,8 +11,15 @@
 }
 
 .section-heading--left {
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .section-heading--left {
+    align-items: flex-start;
+    text-align: left;
+  }
 }
 
 .section-heading h2 {

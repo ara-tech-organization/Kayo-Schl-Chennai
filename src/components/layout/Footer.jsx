@@ -7,11 +7,12 @@ const PROGRAMMES = ["Day Care", "Playgroup", "Nursery", "LKG", "UKG", "Primary E
 
 function FacebookIcon(props) {
   return (
-    <svg viewBox="0 0 48 48" aria-hidden="true" {...props}>
-      <circle cx="24" cy="24" r="24" fill="currentColor" />
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
       <path
-        fill="#fff"
-        d="M26.5 39V25.5H31l.8-5.3h-5.3v-3.4c0-1.5.8-3 3.3-3h2.3V9.3c-.4-.1-1.9-.3-3.7-.3-3.7 0-6.2 2.2-6.2 6.5v3.7H18v5.3h4.4V39h4.1Z"
+        d="M15.5 8.5h-2c-.55 0-1 .45-1 1V12h3l-.4 3h-2.6v7h-3v-7H7.5v-3h2v-2.2C9.5 7.24 11.24 5.5 13.8 5.5h1.7v3Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -19,41 +20,32 @@ function FacebookIcon(props) {
 
 function InstagramIcon(props) {
   return (
-    <svg viewBox="0 0 48 48" aria-hidden="true" {...props}>
-      <rect
-        x="8"
-        y="8"
-        width="32"
-        height="32"
-        rx="9"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="3.2"
-      />
-      <circle cx="24" cy="24" r="7.2" fill="none" stroke="currentColor" strokeWidth="3.2" />
-      <circle cx="33.2" cy="14.8" r="2.3" fill="currentColor" />
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="12" cy="12" r="3.6" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="17.1" cy="6.9" r="1.1" fill="currentColor" />
     </svg>
   );
 }
 
 function YouTubeIcon(props) {
   return (
-    <svg viewBox="0 0 48 48" aria-hidden="true" {...props}>
-      <circle cx="24" cy="24" r="20" fill="#fff" />
-      <rect x="11" y="13" width="26" height="22" rx="6" fill="currentColor" />
-      <path fill="#fff" d="M21 19.5v9l8-4.5-8-4.5Z" />
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <rect x="3" y="6" width="18" height="12" rx="4" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M10.3 9.5v5l4.4-2.5-4.4-2.5Z" fill="currentColor" />
     </svg>
   );
 }
 
 function LinkedInIcon(props) {
   return (
-    <svg viewBox="0 0 48 48" aria-hidden="true" {...props}>
-      <circle cx="24" cy="24" r="24" fill="currentColor" />
-      <circle cx="16.2" cy="17" r="2.6" fill="#fff" />
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <circle cx="6.3" cy="6.6" r="1.6" stroke="currentColor" strokeWidth="1.7" />
       <path
-        fill="#fff"
-        d="M13.8 21.2h4.8V34h-4.8V21.2Zm7.6 0h4.6v1.8h.1c.6-1.2 2.2-2.4 4.5-2.4 4.8 0 5.6 3.1 5.6 7V34h-4.8v-5.8c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3V34h-4.8V21.2Z"
+        d="M4.8 10.2h3v9.3h-3v-9.3Zm5.8 0h2.9v1.3h.04c.4-.75 1.4-1.55 2.9-1.55 3.1 0 3.66 2 3.66 4.6v5h-3v-4.4c0-1.05-.02-2.4-1.46-2.4-1.47 0-1.7 1.15-1.7 2.33v4.47h-3v-9.35Z"
+        stroke="currentColor"
+        strokeWidth="1.3"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -89,7 +81,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <link.icon size={18} />
+                <link.icon size={19} />
               </a>
             ))}
           </div>
@@ -133,7 +125,7 @@ export default function Footer() {
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
           <span>&copy; {new Date().getFullYear()} Kayo International Preschool &amp; DayCare. All rights reserved.</span>
-          <span>Perungudi &middot; Nanmangalam &middot; Pallikaranai &middot; Palavakkam &middot; Taramani</span>
+          <span>Heart crafted by Ara Sisover Technology</span>
         </div>
       </div>
     </footer>

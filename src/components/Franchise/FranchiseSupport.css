@@ -71,6 +71,18 @@
   margin-bottom: 0;
 }
 
+@media (max-width: 991px) {
+  .fr-support__grid .section-heading {
+    align-items: center;
+    text-align: center;
+  }
+
+  .fr-support__grid .section-heading h2,
+  .fr-support__grid .section-heading__desc {
+    margin-inline: auto;
+  }
+}
+
 .fr-support__art-wrap {
   width: 100%;
   max-width: 300px;

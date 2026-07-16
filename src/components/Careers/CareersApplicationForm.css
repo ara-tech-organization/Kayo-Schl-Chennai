@@ -271,3 +271,22 @@
     inset: 22px -16px -22px 18px;
   }
 }
+
+@media (max-width: 767.98px) {
+  .cr-apply__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cr-apply__intro h2,
+  .cr-apply__intro p {
+    margin-inline: auto;
+  }
+
+  .cr-apply__steps,
+  .cr-apply__steps li {
+    text-align: left;
+  }
+}

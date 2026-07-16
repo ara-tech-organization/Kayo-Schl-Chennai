@@ -109,7 +109,7 @@ export default function Programmes() {
                 <div className="programmes__showcase-visual">
                   <img
                     src={current.image}
-                    alt={current.title}
+                    alt={`${current.title} programme at Kayo International Preschool, Perungudi Chennai`}
                     className="programmes__showcase-img"
                   />
                 </div>

@@ -23,57 +23,90 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 82px;
+  gap: 24px;
+  height: 88px;
 }
 
 .navbar__brand {
+  position: relative;
   display: flex;
   align-items: center;
+  flex-shrink: 0;
+  padding-bottom: 6px;
+}
+
+.navbar__brand::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    #d1247e 0%,
+    #f0b84e 34%,
+    #3fae5c 66%,
+    #3a8fd1 100%
+  );
 }
 
 .navbar__logo {
-  height: 52px;
+  height: 58px;
   width: auto;
 }
 
 .navbar__links {
   display: none;
   align-items: center;
-  gap: 34px;
+  gap: 30px;
 }
 
 .navbar__link {
   position: relative;
-  font-weight: 600;
-  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   color: var(--color-ink-soft);
-  padding: 8px 2px;
+  padding: 4px 0;
   transition: color var(--dur-fast) var(--ease-premium);
-}
-
-.navbar__link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 100%;
-  bottom: 0;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--color-primary);
-  transition: right var(--dur-med) var(--ease-premium);
 }
 
 .navbar__link:hover {
   color: var(--color-ink);
 }
 
-.navbar__link:hover::after,
-.navbar__link.is-active::after {
-  right: 0;
-}
-
 .navbar__link.is-active {
   color: var(--color-primary-dark);
+}
+
+.navbar__link.is-active::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  background: var(--color-gold, #d1951f);
+  clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+}
+
+.navbar__link.is-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-gold, #d1951f) 100%);
 }
 
 .navbar__group {
@@ -81,12 +114,10 @@
 }
 
 .navbar__link--trigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: none;
+  background: transparent;
   border: none;
   cursor: pointer;
+  font-family: var(--font-display);
 }
 
 .navbar__chevron {
@@ -128,21 +159,24 @@
 }
 
 .navbar__dropdown-link {
-  padding: 10px 14px;
+  padding: 9px 13px;
   border-radius: var(--radius-sm);
+  border: 1.5px solid transparent;
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--color-ink-soft);
-  transition: background var(--dur-fast) var(--ease-premium), color var(--dur-fast) var(--ease-premium);
+  transition: border-color var(--dur-fast) var(--ease-premium), color var(--dur-fast) var(--ease-premium);
 }
 
 .navbar__dropdown-link:hover {
-  background: var(--color-primary-light);
+  background: transparent;
+  border-color: var(--color-primary-light);
   color: var(--color-primary-dark);
 }
 
 .navbar__dropdown-link.is-active {
-  background: var(--color-primary-light);
+  background: transparent;
+  border-color: var(--color-primary);
   color: var(--color-primary-dark);
 }
 
@@ -184,21 +218,40 @@
 .navbar__actions {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
+  flex-shrink: 0;
 }
 
 .navbar__phone {
   display: none;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
+  padding-right: 20px;
+  border-right: 1px solid var(--color-line-soft);
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--color-ink-soft);
+  transition: color var(--dur-fast) var(--ease-premium);
+}
+
+.navbar__phone svg {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  box-sizing: border-box;
+}
+
+.navbar__phone:hover {
+  color: var(--color-ink);
 }
 
 .navbar__cta {
   display: none;
-  padding: 12px 24px;
+  padding: 13px 26px;
   font-size: 0.9rem;
 }
 
@@ -248,7 +301,6 @@
 @media (min-width: 992px) {
   .navbar__links {
     display: flex;
-    gap: 28px;
   }
   .navbar__phone {
     display: flex;

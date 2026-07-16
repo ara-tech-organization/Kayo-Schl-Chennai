@@ -152,6 +152,35 @@
   color: var(--color-ink);
 }
 
+@media (max-width: 991px) {
+  .enquiry__intro {
+    text-align: center;
+  }
+
+  .enquiry__intro h2,
+  .enquiry__intro p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .enquiry__points {
+    align-items: center;
+  }
+
+  .enquiry__point {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .enquiry__point div {
+    max-width: 42ch;
+  }
+
+  .enquiry__call {
+    margin: 0 auto;
+  }
+}
+
 @media (min-width: 576px) {
   .enquiry__row {
     grid-template-columns: 1fr 1fr;

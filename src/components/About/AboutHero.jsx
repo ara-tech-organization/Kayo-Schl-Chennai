@@ -77,9 +77,6 @@ export default function AboutHero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.1, ease: EASE }}
         >
-          <span className="about-hero__orbit" />
-          <span className="about-hero__orbit about-hero__orbit--inner" />
-
           <div className="about-hero__core">
             <img
               src={aboutHeroImg}
@@ -88,16 +85,23 @@ export default function AboutHero() {
             />
           </div>
 
+          <span className="about-hero__sparkle" aria-hidden="true">
+            <Sparkles size={18} strokeWidth={2} />
+          </span>
+
           {SATELLITES.map((s, i) => (
             <motion.div
               className={`about-hero__satellite about-hero__satellite--${s.pos}`}
               key={s.label}
-              initial={{ opacity: 0, scale: 0.6 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.5 + i * 0.12, ease: EASE }}
+              initial={{ opacity: 0, y: s.pos === "tr" ? -12 : 12 }}
+              animate={{ opacity: 1, y: [0, s.pos === "tr" ? 10 : -10, 0] }}
+              transition={{
+                opacity: { duration: 0.6, delay: 0.5 + i * 0.12, ease: EASE },
+                y: { duration: 4.5 + i * 0.3, delay: 1 + i * 0.1, repeat: Infinity, ease: "easeInOut" },
+              }}
             >
               <span>
-                <s.icon size={16} strokeWidth={1.9} />
+                <s.icon size={20} strokeWidth={2} />
               </span>
               <strong>{s.value}</strong>
               <small>{s.label}</small>

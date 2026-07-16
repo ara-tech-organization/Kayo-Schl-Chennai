@@ -16,13 +16,16 @@ import { Link } from "react-router-dom";
 import SectionHeading from "../common/SectionHeading";
 import ArtPanel from "../common/ArtPanel";
 import "./GalleryPreview.css";
+import classroomImg from "../../assets/classroom.png";
 import outdoorImg from "../../assets/Outdoor.png";
 import stemImg from "../../assets/STEM Activit.png";
+import theatreImg from "../../assets/Theatre.png";
 
 const IMAGES = [
   {
     tone: "primary",
     icon: Puzzle,
+    image: classroomImg,
     caption: "Montessori Classroom",
     alt: "Montessori-themed classroom at Kayo International Preschool with child-friendly learning materials",
   },
@@ -43,6 +46,7 @@ const IMAGES = [
   {
     tone: "orange",
     icon: Drama,
+    image: theatreImg,
     caption: "Kayo Little Theatre",
     alt: "Students performing at Kayo Little Theatre, fostering confidence and creativity",
   },
