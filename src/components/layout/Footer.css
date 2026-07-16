@@ -9,9 +9,14 @@
 
 .footer__grid {
   display: grid;
-  gap: 48px;
-  grid-template-columns: 1fr;
-  padding-bottom: 56px;
+  gap: 36px 24px;
+  grid-template-columns: repeat(2, 1fr);
+  padding-bottom: 40px;
+}
+
+.footer__brand,
+.footer__contact {
+  grid-column: 1 / -1;
 }
 
 .footer__logo {
@@ -111,9 +116,29 @@
   color: var(--footer-ink-faint);
 }
 
+@media (min-width: 576px) {
+  .footer__grid {
+    gap: 40px 32px;
+    padding-bottom: 48px;
+  }
+}
+
 @media (min-width: 768px) {
   .footer__grid {
+    padding-bottom: 52px;
+  }
+}
+
+@media (min-width: 992px) {
+  .footer__grid {
+    gap: 48px;
     grid-template-columns: 1.4fr 0.8fr 0.8fr 1fr;
+    padding-bottom: 56px;
+  }
+
+  .footer__brand,
+  .footer__contact {
+    grid-column: auto;
   }
 }
 
