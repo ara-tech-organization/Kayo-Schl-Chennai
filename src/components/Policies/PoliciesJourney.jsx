@@ -1,10 +1,20 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles, Star } from "lucide-react";
 import Reveal from "../common/Reveal";
+import FloatingShapes from "../common/FloatingShapes";
 import "./PoliciesJourney.css";
 
 const EASE = [0.16, 1, 0.3, 1];
+
+const SHAPES = [
+  { type: "star", color: "var(--color-gold)", size: 26, top: "12%", right: "5%", speed: 0.34, float: 18, dur: 6, rotate: 16 },
+  { type: "dot", color: "var(--color-primary)", size: 16, bottom: "16%", left: "4%", speed: 0.46, float: 20, dur: 5, opacity: 0.6 },
+  { type: "plus", color: "var(--color-orange)", size: 20, top: "24%", left: "3%", speed: 0.42, float: 14, dur: 6, opacity: 0.7 },
+  { type: "cloud", color: "var(--color-surface)", size: 60, top: "8%", left: "40%", speed: 0.22, float: 14, dur: 9 },
+  { type: "squiggle", color: "var(--color-secondary)", size: 58, bottom: "22%", right: "7%", speed: 0.3, float: 12, dur: 7, opacity: 0.4 },
+  { type: "dot", color: "var(--color-gold)", size: 14, top: "44%", right: "4%", speed: 0.5, float: 22, dur: 5, opacity: 0.6 },
+];
 
 export default function PoliciesJourney({
   items,
@@ -20,7 +30,9 @@ export default function PoliciesJourney({
 
   return (
     <section className="pol-spotlight" id={id}>
-      <div className="container">
+      <span className="deco-blob pol-spotlight__blob" aria-hidden="true" />
+      <FloatingShapes items={SHAPES} />
+      <div className="container pol-spotlight__container">
         <div className="pol-spotlight__head">
           <Reveal y={18}>
             <span className="eyebrow">{eyebrow}</span>
@@ -48,9 +60,13 @@ export default function PoliciesJourney({
                   }`}
                   onClick={() => setActive(i)}
                 >
-                  <span className="pol-spotlight__tab-icon">
+                  <motion.span
+                    className="pol-spotlight__tab-icon"
+                    whileHover={{ rotate: [0, -12, 8, 0], scale: 1.12 }}
+                    transition={{ duration: 0.5 }}
+                  >
                     <p.icon size={19} strokeWidth={1.8} />
-                  </span>
+                  </motion.span>
                   <span className="pol-spotlight__tab-text">
                     <strong>{p.title}</strong>
                     <span>{p.tagline}</span>
@@ -85,15 +101,44 @@ export default function PoliciesJourney({
                 exit={{ opacity: 0, y: -14, scale: 0.98 }}
                 transition={{ duration: 0.45, ease: EASE }}
               >
-                <span className="pol-spotlight__card-icon">
-                  <current.icon size={30} strokeWidth={1.6} />
-                </span>
-                <span className="pol-spotlight__card-count">
-                  {String(active + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}
-                </span>
-                <span className="pol-spotlight__card-tagline">{current.tagline}</span>
+                <motion.span
+                  className="pol-spotlight__confetti pol-spotlight__confetti--a"
+                  aria-hidden="true"
+                  animate={{ y: [0, -8, 0], rotate: [0, 14, 0] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Star size={20} strokeWidth={0} fill="currentColor" />
+                </motion.span>
+                <motion.span
+                  className="pol-spotlight__confetti pol-spotlight__confetti--b"
+                  aria-hidden="true"
+                  animate={{ y: [0, 8, 0], rotate: [0, -12, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+                >
+                  <Sparkles size={22} strokeWidth={2} />
+                </motion.span>
+                <span className="pol-spotlight__confetti pol-spotlight__confetti--c" aria-hidden="true" />
+                <span className="pol-spotlight__confetti pol-spotlight__confetti--d" aria-hidden="true" />
+
+                <motion.div
+                  className="pol-spotlight__medal"
+                  animate={{ y: [0, -9, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <motion.span
+                    className="pol-spotlight__medal-icon"
+                    initial={{ rotate: -12, scale: 0.7 }}
+                    animate={{ rotate: [0, -12, 9, 0], scale: 1 }}
+                    transition={{ duration: 0.6, ease: EASE }}
+                  >
+                    <current.icon size={44} strokeWidth={1.7} />
+                  </motion.span>
+                  <span className="pol-spotlight__medal-num">{String(active + 1).padStart(2, "0")}</span>
+                </motion.div>
+
+                <span className="pol-spotlight__ribbon">{current.tagline}</span>
                 <h3>{current.title}</h3>
-                <p>{current.text}</p>
+                <p className="pol-spotlight__bubble">{current.text}</p>
               </motion.div>
             </AnimatePresence>
 

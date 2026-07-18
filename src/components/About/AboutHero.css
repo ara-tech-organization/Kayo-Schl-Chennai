@@ -367,6 +367,11 @@
    Responsive
    ========================================================================== */
 @media (max-width: 479.98px) {
+  /* Floor the title below 480px so the nowrap "Kayo International" mark
+     can't overflow the 272px content width at 320px. Rejoins 2rem at 480. */
+  .ahero__title {
+    font-size: clamp(1.5rem, 6.2vw, 2rem);
+  }
   .ahero__badge {
     min-width: 78px;
     padding: 10px 12px;
@@ -402,19 +407,33 @@
   .ahero__copy {
     align-items: flex-start;
     text-align: left;
+    /* extra left breathing room for the copy on desktop */
+    padding-left: clamp(24px, 3vw, 48px);
   }
   .ahero__tags,
   .ahero__actions {
     justify-content: flex-start;
   }
+  /* Center the collage in its column so the slack splits evenly on both sides
+     at every desktop width — right-aligning piled all the gap on the left and
+     jammed the image + badges against the right edge. */
   .ahero__collage {
-    margin: 0 0 0 auto;
+    max-width: 400px;
+    margin-inline: auto;
+  }
+  .ahero__badge--tr,
+  .ahero__badge--br {
+    right: -3%;
   }
   .ahero__strip {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
+/* 992–1199: the container is still full-width (it only starts centering at
+   >=1200px once it hits the 1240 cap), so the right-aligned collage sits flush
+   to the content edge and the -8% floating badges overflow and clip. Inset the
+   collage a touch and tuck the right badges in for this band only. */
 @media (prefers-reduced-motion: reduce) {
   .ahero__badge,
   .ahero__polaroid {

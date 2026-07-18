@@ -12,9 +12,18 @@ import {
 } from "lucide-react";
 import SectionHeading from "../common/SectionHeading";
 import Reveal from "../common/Reveal";
+import FloatingShapes from "../common/FloatingShapes";
 import "./IntelligencesRail.css";
 
 const EASE = [0.16, 1, 0.3, 1];
+
+const SHAPES = [
+  { type: "blob", color: "var(--color-gold-light)", size: 160, top: "8%", right: "-3%", speed: 0.26, float: 18, dur: 8 },
+  { type: "star", color: "var(--color-primary)", size: 28, bottom: "16%", left: "5%", speed: 0.38, float: 18, dur: 6, rotate: -16, opacity: 0.6 },
+  { type: "dot", color: "var(--color-orange)", size: 18, top: "24%", left: "9%", speed: 0.48, float: 20, dur: 6, opacity: 0.6 },
+];
+
+const TONES = ["primary", "secondary", "gold", "orange"];
 
 const INTELLIGENCES = [
   {
@@ -70,14 +79,16 @@ const INTELLIGENCES = [
 export default function IntelligencesRail() {
   const [active, setActive] = useState(0);
   const current = INTELLIGENCES[active];
+  const currentTone = TONES[active % TONES.length];
 
   return (
     <section className="mi-showcase" id="intelligences">
+      <FloatingShapes items={SHAPES} />
       <div className="container">
         <SectionHeading
           eyebrow="Multiple Intelligence Theory"
           title="Nurturing Every Child's Unique Gifts"
-          description="Howard Gardner's Multiple Intelligence Theory tells us that every child is smart in their own unique way. At KAYO INTERNATIONAL, we celebrate this by nurturing all eight intelligences in every child, because true learning happens when education sees the whole child, not just one side."
+          description="Howard Gardner's Multiple Intelligence Theory tells us every child is smart in their own unique way. At KAYO INTERNATIONAL, we celebrate this by nurturing all eight intelligences in every child — because true learning happens when education sees the whole child, not just one side."
         />
 
         <div className="mi-showcase__layout">
@@ -88,8 +99,11 @@ export default function IntelligencesRail() {
                 key={mi.title}
                 role="tab"
                 aria-selected={active === i}
-                className={`mi-showcase__pick ${active === i ? "is-active" : ""}`}
+                className={`mi-showcase__pick mi-showcase__pick--${TONES[i % TONES.length]} ${
+                  active === i ? "is-active" : ""
+                }`}
                 onClick={() => setActive(i)}
+                onMouseEnter={() => setActive(i)}
               >
                 <span className="mi-showcase__pick-icon">
                   <mi.icon strokeWidth={1.7} />
@@ -106,14 +120,15 @@ export default function IntelligencesRail() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.title}
-                className="mi-showcase__detail"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
+                className={`mi-showcase__detail mi-showcase__detail--${currentTone}`}
+                initial={{ opacity: 0, y: 16, rotate: -1 }}
+                animate={{ opacity: 1, y: 0, rotate: 0 }}
                 exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.45, ease: EASE }}
+                transition={{ duration: 0.4, ease: EASE }}
               >
-                <span className="mi-showcase__detail-index">
-                  {String(active + 1).padStart(2, "0")} / 08
+                <span className="mi-showcase__detail-index" aria-hidden="true">
+                  {String(active + 1).padStart(2, "0")}
+                  <small>/08</small>
                 </span>
                 <span className="mi-showcase__detail-icon">
                   <current.icon strokeWidth={1.5} />

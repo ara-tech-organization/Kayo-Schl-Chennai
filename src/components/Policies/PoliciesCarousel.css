@@ -1,258 +1,388 @@
-.pol-carousel {
+.pol-wb {
   position: relative;
-  padding: 64px 0 60px;
-  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+  padding: var(--section-pad) 0;
   overflow: hidden;
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
 }
 
-.pol-carousel__head {
+.pol-wb__container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Head ---------- */
+.pol-wb__head {
   display: grid;
   gap: 24px;
   max-width: 900px;
 }
 
 @media (max-width: 767.98px) {
-  .pol-carousel__head .section-heading--left {
+  .pol-wb__head .section-heading--left {
     align-items: center;
     text-align: center;
     margin-inline: auto;
   }
 
-  .pol-carousel__head .section-heading--left h2 {
+  .pol-wb__head .section-heading--left h2 {
     margin-inline: auto;
   }
 }
 
-.pol-carousel__facts {
-  padding: 18px 22px;
-  border-radius: 20px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line-soft);
-  box-shadow: var(--shadow-soft);
+.pol-wb__facts {
+  position: relative;
+  padding: 22px 22px 20px;
+  border-radius: 22px;
+  background: var(--color-gold-light);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow-sticker);
+  transform: rotate(-1.2deg);
 }
 
-.pol-carousel__facts-kicker {
+.pol-wb__facts-tape {
+  position: absolute;
+  top: -10px;
+  left: 26px;
+  width: 60px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px dashed rgba(38, 35, 29, 0.18);
+  transform: rotate(-6deg);
+  border-radius: 3px;
+}
+
+.pol-wb__facts-kicker {
   display: block;
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-secondary-dark);
+  color: var(--color-orange-dark);
   margin-bottom: 8px;
 }
 
-.pol-carousel__facts p {
+.pol-wb__facts p {
   font-family: var(--font-display);
   font-size: 0.98rem;
   color: var(--color-ink);
   margin-bottom: 10px;
 }
 
-.pol-carousel__facts ul {
+.pol-wb__facts ul {
   margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 18px;
+  gap: 8px 16px;
 }
 
-.pol-carousel__facts li {
+.pol-wb__facts li {
   position: relative;
-  padding-left: 16px;
+  padding-left: 18px;
   font-size: 0.86rem;
   color: var(--color-ink-soft);
 }
 
-.pol-carousel__facts li::before {
+.pol-wb__facts li::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.5em;
-  width: 6px;
-  height: 6px;
+  top: 0.2em;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-secondary), var(--color-gold));
+  background: var(--color-secondary);
+  box-shadow: inset 0 0 0 3px var(--color-secondary-light);
 }
 
-/* ---------- Controls ---------- */
-
-.pol-carousel__controls {
+.pol-wb__hint {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 36px;
-  margin-bottom: 18px;
+  justify-content: center;
+  gap: 8px;
+  margin: 34px 0 22px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-ink-faint);
 }
 
-.pol-carousel__dots {
+.pol-wb__hint svg {
+  color: var(--color-primary);
+}
+
+/* ---------- Flip cards ---------- */
+.pol-wb__flipgrid {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.pol-wb__flip-cell {
+  flex: 0 1 100%;
+  display: flex;
+}
+
+.pol-wb__flip {
+  --w-soft: var(--color-primary-light);
+  --w-ink: var(--color-primary-dark);
+  --w-solid: var(--color-primary);
+  width: 100%;
+  height: 300px;
+  perspective: 1200px;
+  cursor: pointer;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform var(--dur-med) var(--ease-premium);
+}
+
+.pol-wb__flip:hover {
+  transform: rotate(0deg) translateY(-6px);
+}
+
+.pol-wb__flip:focus-visible {
+  outline: none;
+  transform: rotate(0deg) translateY(-6px);
+}
+
+.pol-wb__flip--secondary {
+  --w-soft: var(--color-secondary-light);
+  --w-ink: var(--color-secondary-dark);
+  --w-solid: var(--color-secondary-dark);
+}
+.pol-wb__flip--gold {
+  --w-soft: var(--color-gold-light);
+  --w-ink: var(--color-orange-dark);
+  --w-solid: var(--color-gold);
+}
+.pol-wb__flip--orange {
+  --w-soft: var(--color-orange-light);
+  --w-ink: var(--color-orange-dark);
+  --w-solid: var(--color-orange);
+}
+
+.pol-wb__flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s var(--ease-premium);
+}
+
+.pol-wb__flip:hover .pol-wb__flip-inner,
+.pol-wb__flip:focus-visible .pol-wb__flip-inner,
+.pol-wb__flip.is-flipped .pol-wb__flip-inner {
+  transform: rotateY(180deg);
+}
+
+.pol-wb__face {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 22px 20px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+/* group the front content in the vertical centre — no big empty middle */
+.pol-wb__face--front {
+  justify-content: center;
   gap: 8px;
 }
 
-.pol-carousel__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: none;
-  background: var(--color-line);
-  cursor: pointer;
-  transition: width var(--dur-med) var(--ease-premium), background var(--dur-med) var(--ease-premium);
-}
-
-.pol-carousel__dot.is-active {
-  width: 26px;
-  border-radius: 5px;
-  background: var(--color-secondary-dark);
-}
-
-.pol-carousel__arrows {
-  display: flex;
-  gap: 10px;
-}
-
-.pol-carousel__arrow {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--color-line);
-  background: var(--color-surface);
+/* ---- Front (pastel brand tint) ---- */
+.pol-wb__face--front {
+  background: var(--w-soft);
   color: var(--color-ink);
-  cursor: pointer;
-  transition: transform var(--dur-fast) var(--ease-premium), background var(--dur-fast) var(--ease-premium),
-    border-color var(--dur-fast) var(--ease-premium), color var(--dur-fast) var(--ease-premium);
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  box-shadow: var(--shadow-sticker);
 }
 
-.pol-carousel__arrow:hover {
-  transform: translateY(-3px);
-  background: var(--color-secondary-light);
-  border-color: transparent;
-  color: var(--color-secondary-dark);
-}
-
-/* ---------- Track ---------- */
-
-.pol-carousel__track {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 6px 6px 16px;
-  margin: 0 -6px;
-  scrollbar-width: none;
-}
-
-.pol-carousel__track::-webkit-scrollbar {
-  display: none;
-}
-
-.pol-carousel__card {
-  --pol-soft: var(--color-primary-light);
-  --pol-strong: var(--color-primary-dark);
-  --pol-accent: var(--color-primary);
+/* keep the real content above the decorations */
+.pol-wb__flip-num,
+.pol-wb__flip-icon,
+.pol-wb__flip-tag,
+.pol-wb__face--front h3,
+.pol-wb__flip-cue {
   position: relative;
-  flex: 0 0 auto;
-  width: 78vw;
-  max-width: 320px;
-  padding: 28px 24px;
-  border-radius: 26px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line-soft);
-  box-shadow: var(--shadow-soft);
-  scroll-snap-align: start;
-  transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium);
+  z-index: 1;
 }
 
-.pol-carousel__card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lift);
-}
-
-.pol-carousel__card::before {
-  content: "";
+/* soft corner glow for depth */
+.pol-wb__flip-glow {
   position: absolute;
-  top: 0;
-  left: 24px;
-  right: 24px;
-  height: 4px;
-  border-radius: 0 0 4px 4px;
-  background: linear-gradient(90deg, var(--pol-accent), var(--pol-strong));
+  top: -50px;
+  right: -50px;
+  z-index: 0;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55), transparent 70%);
+  pointer-events: none;
 }
 
-.pol-carousel__card-icon {
+/* big faded icon watermark filling the middle */
+.pol-wb__flip-watermark {
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-8deg);
+  z-index: 0;
+  color: var(--w-ink);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+/* playful dot-grid texture in the lower corner */
+.pol-wb__flip-dots {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  z-index: 0;
+  width: 60px;
+  height: 32px;
+  background-image: radial-gradient(currentColor 2px, transparent 2px);
+  background-size: 15px 15px;
+  color: var(--w-ink);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.pol-wb__flip-num {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  line-height: 1;
+  color: var(--w-ink);
+  opacity: 0.3;
+}
+
+.pol-wb__flip-icon {
   display: grid;
   place-items: center;
   width: 56px;
   height: 56px;
   border-radius: 17px;
-  background: var(--pol-soft);
-  color: var(--pol-strong);
-  margin-bottom: 18px;
+  margin-bottom: 6px;
+  background: var(--color-surface);
+  color: var(--w-ink);
+  box-shadow: 0 10px 20px -12px rgba(38, 35, 29, 0.4);
 }
 
-.pol-carousel__card-index {
-  position: absolute;
-  top: 28px;
-  right: 24px;
-  font-family: var(--font-display);
-  font-size: 0.8rem;
-  color: var(--color-ink-faint);
-}
-
-.pol-carousel__card-tagline {
-  display: block;
-  font-size: 0.7rem;
-  font-weight: 700;
+/* plain label — no pill background */
+.pol-wb__flip-tag {
+  align-self: flex-start;
+  font-size: 0.66rem;
+  font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--pol-strong);
-  margin-bottom: 8px;
+  color: var(--w-ink);
 }
 
-.pol-carousel__card h3 {
-  font-size: 1.14rem;
+.pol-wb__face--front h3 {
+  font-size: 1.22rem;
+  color: var(--color-ink);
+  line-height: 1.16;
+}
+
+.pol-wb__flip-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--w-ink);
+  opacity: 0.85;
+}
+
+/* ---- Back ---- */
+.pol-wb__face--back {
+  transform: rotateY(180deg);
+  background: var(--color-surface);
+  border: 2px solid var(--w-soft);
+  box-shadow: var(--shadow-lift);
+  /* long policy text on narrow/multi-column widths must scroll, not clip */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+.pol-wb__back-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   margin-bottom: 10px;
+  background: var(--w-soft);
+  color: var(--w-ink);
+  flex-shrink: 0;
 }
 
-.pol-carousel__card p {
-  font-size: 0.9rem;
+.pol-wb__back-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--w-ink);
+  margin-bottom: 6px;
 }
 
-.pol-carousel__card--secondary {
-  --pol-soft: var(--color-secondary-light);
-  --pol-strong: var(--color-secondary-dark);
-  --pol-accent: var(--color-secondary);
+.pol-wb__face--back p {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--color-ink-soft);
 }
-.pol-carousel__card--gold {
-  --pol-soft: var(--color-gold-light);
-  --pol-strong: var(--color-orange-dark);
-  --pol-accent: var(--color-gold);
+
+.pol-wb__flip-cue--back {
+  margin-top: 10px;
+  color: var(--w-ink);
+  flex-shrink: 0;
 }
-.pol-carousel__card--orange {
-  --pol-soft: var(--color-orange-light);
-  --pol-strong: var(--color-orange-dark);
-  --pol-accent: var(--color-orange);
+
+@media (min-width: 560px) {
+  /* two across; the last odd card centres on its row */
+  .pol-wb__flip-cell {
+    flex-basis: calc((100% - 18px) / 2);
+  }
 }
 
 @media (min-width: 768px) {
-  .pol-carousel {
-    padding: 84px 0 76px;
-  }
-
-  .pol-carousel__head {
+  .pol-wb__head {
     grid-template-columns: 1.2fr 0.8fr;
     align-items: start;
   }
 
-  .pol-carousel__card {
-    width: 340px;
+  .pol-wb__hint {
+    justify-content: flex-start;
+  }
+
+  .pol-wb__flipgrid {
+    gap: 22px;
+  }
+
+  /* three across; the last two cards centre on the bottom row */
+  .pol-wb__flip-cell {
+    flex-basis: calc((100% - 44px) / 3);
+    max-width: 360px;
+  }
+
+  .pol-wb__flip {
+    height: 360px;
   }
 }
 
-@media (min-width: 992px) {
-  .pol-carousel {
-    padding: 100px 0 88px;
+@media (prefers-reduced-motion: reduce) {
+  .pol-wb__flip-inner {
+    transition: none;
+  }
+
+  .pol-wb__flip {
+    transition: none;
   }
 }

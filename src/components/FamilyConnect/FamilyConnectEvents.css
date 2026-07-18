@@ -13,7 +13,8 @@
 /* ---------- Winding year path ---------- */
 .fc-events__path {
   position: relative;
-  margin-top: 44px;
+  margin: 44px auto 0;
+  max-width: 640px;
   display: flex;
   flex-direction: column;
   gap: 26px;
@@ -161,9 +162,10 @@
 }
 
 /* ---------- Desktop: alternate cards left/right of the centre road ---------- */
-@media (min-width: 900px) {
+@media (min-width: 992px) {
   .fc-events__path {
     gap: 6px;
+    max-width: none;
   }
 
   .fc-events__path::before {

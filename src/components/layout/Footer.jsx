@@ -170,8 +170,15 @@ export default function Footer() {
             reserved.
           </span>
           <span>
-            Made with <span className="footer__heart" aria-hidden="true">&#9829;</span> by Ara
-            Sisover Technology
+            Crafted by{" "}
+            <a
+              href="https://discovertechnologies.co/"
+              target="_blank"
+              rel="noreferrer"
+              className="footer__credit-link"
+            >
+              Ara Discover Technologies
+            </a>
           </span>
         </div>
       </div>

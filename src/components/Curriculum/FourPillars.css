@@ -1,225 +1,192 @@
+/* ==========================================================================
+   Four Pillars — playful sticker board (2×2), with a bold featured card
+   ========================================================================== */
 .four-pillars {
   position: relative;
-  padding: 64px 0 70px;
+  padding: var(--section-pad) 0;
+  overflow: hidden;
+  isolation: isolate;
   background: var(--color-bg);
 }
 
-.four-pillars__lead-in {
-  text-align: center;
-  font-weight: 700;
-  color: var(--color-ink);
-  margin-top: 8px;
+.four-pillars .container {
+  position: relative;
+  z-index: 1;
 }
 
-.pillars-zigzag {
-  position: relative;
+.pillars__lead-in {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(0.98rem, 2.6vw, 1.05rem);
+  color: var(--color-ink);
+  margin: 8px 0 0;
+}
+
+.pillars__board {
   margin-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px 24px;
+}
+
+/* ---- Sticker card ---- */
+.pillars__card {
+  --tone: var(--color-primary);
+  --tone-dark: var(--color-primary-dark);
+  --tone-soft: var(--color-primary-light);
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-
-.four-pillars__closing {
-  max-width: 780px;
-  margin: 40px auto 0;
-  text-align: center;
-}
-
-.four-pillars__closing p {
-  font-size: 0.98rem;
-}
-
-.pillars-zigzag__line {
-  display: none;
-}
-
-.pillars-zigzag__item {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 18px;
-}
-
-.pillars-zigzag__number {
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-family: var(--font-display);
-  font-size: 1rem;
-  background: var(--color-primary);
-  color: var(--color-surface);
-  box-shadow: var(--shadow-glow);
-}
-
-.pillars-zigzag__item--secondary .pillars-zigzag__number {
-  background: var(--color-secondary-dark);
-}
-
-.pillars-zigzag__item--orange .pillars-zigzag__number {
-  background: var(--color-orange-dark);
-}
-
-.pillars-zigzag__item--featured .pillars-zigzag__number {
-  background: var(--color-primary-dark);
-}
-
-.pillars-zigzag__card {
-  flex: 1;
-  min-width: 0;
-  padding: 24px 24px;
-  border-radius: var(--radius-md);
+  gap: 10px;
+  padding: 40px 24px 26px;
   background: var(--color-surface);
-  border: 1px solid var(--color-line-soft);
-  box-shadow: var(--shadow-soft);
-  transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium),
-    border-color var(--dur-med) var(--ease-premium);
+  border: 2px solid var(--tone);
+  border-radius: 28px;
+  box-shadow: 7px 10px 0 -2px var(--tone-soft);
+  cursor: default;
+  transform-origin: center 30%;
+  will-change: transform;
 }
 
-.pillars-zigzag__card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lift);
-  border-color: transparent;
-}
+.pillars__card--secondary { --tone: var(--color-secondary); --tone-dark: var(--color-secondary-dark); --tone-soft: var(--color-secondary-light); }
+.pillars__card--orange { --tone: var(--color-orange); --tone-dark: var(--color-orange-dark); --tone-soft: var(--color-orange-light); }
 
-.pillars-zigzag__icon {
+/* Big number bubble poking the corner */
+.pillars__num {
+  position: absolute;
+  top: -18px;
+  left: -12px;
+  width: 50px;
+  height: 50px;
   display: grid;
   place-items: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  margin-bottom: 14px;
-  background: var(--color-primary-light);
-  color: var(--color-primary-dark);
+  border-radius: 50%;
+  background: var(--tone);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  line-height: 1;
+  transform: rotate(-8deg);
+  border: 3px solid var(--color-bg);
+  box-shadow: var(--shadow-soft);
+  z-index: 2;
 }
 
-.pillars-zigzag__item--secondary .pillars-zigzag__icon {
-  background: var(--color-secondary-light);
-  color: var(--color-secondary-dark);
+.pillars__tape {
+  position: absolute;
+  top: -9px;
+  right: 30px;
+  width: 62px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px dashed rgba(38, 35, 29, 0.18);
+  transform: rotate(6deg);
+  border-radius: 3px;
+  z-index: 2;
 }
 
-.pillars-zigzag__item--orange .pillars-zigzag__icon {
-  background: var(--color-orange-light);
-  color: var(--color-orange-dark);
+.pillars__icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: var(--tone-soft);
+  color: var(--tone-dark);
+  margin-bottom: 2px;
 }
 
-.pillars-zigzag__card h3 {
-  font-size: 1.08rem;
-  margin-bottom: 8px;
+.pillars__icon svg {
+  width: 28px;
+  height: 28px;
 }
 
-.pillars-zigzag__card p {
-  font-size: 0.92rem;
+.pillars__card h3 {
+  font-size: 1.15rem;
+  color: var(--color-ink);
+}
+
+.pillars__card p {
+  font-size: 0.94rem;
 }
 
 /* ---- Featured card: Multiple Intelligence Theory ---- */
-
-.pillars-zigzag__item--featured .pillars-zigzag__card {
-  background: radial-gradient(circle at 22% 20%, #b169c4 0%, #7a2e91 55%, #5a2069 100%);
-  border-color: transparent;
-  box-shadow: var(--shadow-lift);
+.pillars__card--featured {
+  --tone: var(--color-primary);
+  --tone-soft: var(--color-primary-light);
+  background: radial-gradient(circle at 22% 18%, #b169c4 0%, #7a2e91 55%, #5a2069 100%);
+  border-color: var(--color-primary-dark);
+  box-shadow: 7px 10px 0 -2px var(--color-primary-light);
 }
 
-.pillars-zigzag__item--featured .pillars-zigzag__icon {
-  background: rgba(255, 255, 255, 0.16);
+.pillars__card--featured .pillars__icon {
+  background: rgba(255, 255, 255, 0.18);
   color: #fff;
 }
 
-.pillars-zigzag__item--featured .pillars-zigzag__card h3,
-.pillars-zigzag__item--featured .pillars-zigzag__card p {
+.pillars__card--featured h3,
+.pillars__card--featured p {
   color: #fff;
 }
 
-.pillars-zigzag__item--featured .pillars-zigzag__card p {
-  opacity: 0.86;
+.pillars__card--featured p {
+  opacity: 0.9;
 }
 
-.pillars-zigzag__link {
+.pillars__link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 14px;
+  margin-top: 12px;
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  width: fit-content;
   font-size: 0.86rem;
   font-weight: 700;
   color: #fff;
-  transition: gap var(--dur-fast) var(--ease-premium);
+  transition: gap var(--dur-fast) var(--ease-premium), background var(--dur-fast) var(--ease-premium);
 }
 
-.pillars-zigzag__link:hover {
+.pillars__link:hover {
   gap: 10px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.pillars__closing {
+  max-width: 780px;
+  margin: 44px auto 0;
+  text-align: center;
+}
+
+.pillars__closing p {
+  font-size: 0.98rem;
 }
 
 @media (min-width: 576px) {
-  .four-pillars {
-    padding: 76px 0 84px;
+  .pillars__board {
+    margin-top: 34px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 26px;
   }
-
-  .pillars-zigzag {
-    margin-top: 48px;
-    gap: 24px;
+  /* Offset the second column so the quad reads hand-placed, not gridded */
+  .pillars__board .pillars__card:nth-child(even) {
+    margin-top: 30px;
   }
 }
 
 @media (min-width: 768px) {
-  .four-pillars {
-    padding: 90px 0 100px;
+  .pillars__board {
+    gap: 40px 30px;
   }
-
-  .pillars-zigzag {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .pillars-zigzag__item {
-    flex: 1 1 calc(50% - 10px);
+  .pillars__card {
+    padding: 40px 28px 28px;
   }
 }
 
-@media (min-width: 992px) {
-  .four-pillars {
-    padding: 100px 0 110px;
-  }
-
-  .pillars-zigzag {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    gap: 0;
-    padding-top: 34px;
-  }
-
-  .pillars-zigzag__line {
-    display: block;
-    position: absolute;
-    top: 54px;
-    left: 5%;
-    right: 5%;
-    height: 2px;
-    background: var(--color-line);
-  }
-
-  .pillars-zigzag__item {
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0 12px;
-  }
-
-  .pillars-zigzag__item:nth-of-type(2n) {
-    margin-top: 52px;
-  }
-
-  .pillars-zigzag__number {
-    position: relative;
-    z-index: 1;
-    margin-bottom: 20px;
-  }
-
-  .pillars-zigzag__card {
-    width: 100%;
+@media (prefers-reduced-motion: reduce) {
+  .pillars__card {
+    transform: none !important;
   }
 }

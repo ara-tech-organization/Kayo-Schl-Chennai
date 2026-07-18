@@ -44,7 +44,7 @@
 .cr-hero__text {
   position: relative;
   z-index: 1;
-  order: 2;
+  order: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -183,7 +183,7 @@
 /* ---------- Visual ---------- */
 .cr-hero__visual {
   position: relative;
-  order: 1;
+  order: 2;
   width: 100%;
   max-width: 380px;
   margin: 30px auto 0;

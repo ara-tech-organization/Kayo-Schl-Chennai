@@ -1,35 +1,12 @@
+/* ==========================================================================
+   Curriculum Hero — warm, playful, built around the NURTURE letter tiles
+   ========================================================================== */
 .curr-hero {
   position: relative;
-  padding: 44px 0 56px;
+  padding: 32px 0 0;
   overflow: hidden;
-  background: var(--color-bg);
-  min-height: 480px;
-  display: flex;
-  align-items: center;
-}
-
-.curr-hero__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.curr-hero__bg-img {
-  position: absolute;
-  inset: -20% 0;
-  width: 100%;
-  height: 140%;
-  object-fit: cover;
-  object-position: center;
-  will-change: transform;
-}
-
-.curr-hero__bg-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(10, 8, 14, 0.85);
+  isolation: isolate;
+  background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg-deep) 100%);
 }
 
 .curr-hero__backdrop {
@@ -39,40 +16,33 @@
   pointer-events: none;
 }
 
-.curr-hero__blob {
+.curr-hero__mesh {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(2px);
+  inset: 0;
+  background: radial-gradient(680px 420px at 10% 6%, var(--color-primary-light) 0%, transparent 58%),
+    radial-gradient(620px 460px at 92% 18%, var(--color-secondary-light) 0%, transparent 56%),
+    radial-gradient(720px 480px at 50% 100%, var(--color-gold-light) 0%, transparent 55%);
+  opacity: 0.7;
 }
 
-.curr-hero__blob--a {
-  width: 480px;
-  height: 480px;
-  top: -220px;
-  left: -160px;
-  background: radial-gradient(circle at 30% 30%, var(--color-primary-light), transparent 70%);
-  opacity: 0.8;
-}
-
-.curr-hero__blob--b {
-  width: 360px;
-  height: 360px;
-  bottom: -200px;
-  right: -120px;
-  background: radial-gradient(circle at 60% 40%, var(--color-secondary-light), transparent 70%);
-  opacity: 0.9;
+.curr-hero__grain {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(146, 43, 141, 0.07) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
 }
 
 .curr-hero__inner {
   position: relative;
   z-index: 1;
-  max-width: 900px;
+  max-width: 920px;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 16px;
+  padding: 12px 0 40px;
 }
 
 .curr-hero__crumb {
@@ -81,96 +51,126 @@
   gap: 8px;
   font-size: 0.82rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.72);
-  margin-bottom: 4px;
+  color: var(--color-ink-faint);
 }
 
 .curr-hero__crumb a {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--color-ink-soft);
   transition: color var(--dur-fast) var(--ease-premium);
 }
 
 .curr-hero__crumb a:hover {
-  color: #fff;
+  color: var(--color-primary-dark);
 }
 
 .curr-hero__eyebrow {
   justify-content: center;
-  color: var(--color-gold-light, #fff);
-}
-
-.curr-hero__eyebrow::before {
-  background: var(--color-gold-light, #fff);
 }
 
 .curr-hero__title {
-  font-size: clamp(1.8rem, 4.2vw, 2.8rem);
-  max-width: 34ch;
-  line-height: 1.2;
-  color: #fff;
+  font-size: clamp(1.9rem, 4.4vw, 2.9rem);
+  max-width: 20ch;
+  line-height: 1.16;
 }
 
-.curr-hero__title-prefix {
-  color: var(--color-gold-light, #fff);
+.curr-hero__mark {
+  position: relative;
+  color: var(--color-primary-dark);
+  white-space: nowrap;
+}
+
+.curr-hero__mark::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: 4px;
+  height: 34%;
+  z-index: -1;
+  background: var(--color-gold-light);
+  border-radius: 6px;
+  transform: rotate(-1.2deg);
 }
 
 .curr-hero__lead {
-  font-size: 1.04rem;
+  font-size: 1.02rem;
   max-width: 66ch;
-  color: rgba(255, 255, 255, 0.88);
+}
+
+.curr-hero__lead--muted {
+  font-size: 0.96rem;
+  color: var(--color-ink-faint);
 }
 
 .curr-hero__name-lead {
-  margin-top: 6px;
-  font-weight: 700;
-  color: #fff;
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--color-ink);
 }
 
+.curr-hero__name-lead strong {
+  color: var(--color-primary-dark);
+  letter-spacing: 0.08em;
+}
+
+/* ---- NURTURE letter tiles ---- */
 .curr-hero__letters {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 12px;
+  margin-top: 12px;
 }
 
 .curr-hero__letter {
+  --tone: var(--color-primary);
+  --tone-soft: var(--color-primary-light);
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  width: 50px;
+  gap: 8px;
+  width: 56px;
   padding: 0;
   background: none;
   border: none;
   cursor: pointer;
 }
 
+.curr-hero__letter--primary { --tone: var(--color-primary); --tone-soft: var(--color-primary-light); }
+.curr-hero__letter--secondary { --tone: var(--color-secondary-dark); --tone-soft: var(--color-secondary-light); }
+.curr-hero__letter--gold { --tone: var(--color-orange-dark); --tone-soft: var(--color-gold-light); }
+.curr-hero__letter--orange { --tone: var(--color-orange-dark); --tone-soft: var(--color-orange-light); }
+
 .curr-hero__letter-glyph {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   display: grid;
   place-items: center;
-  border-radius: var(--radius-sm);
+  border-radius: 16px;
   background: var(--color-surface);
-  border: 1px solid var(--color-line-soft);
-  box-shadow: var(--shadow-soft);
+  border: 2px solid var(--tone);
+  box-shadow: 4px 5px 0 -1px var(--tone-soft);
   font-family: var(--font-display);
-  font-size: 1.2rem;
-  color: var(--color-primary-dark);
+  font-size: 1.5rem;
+  color: var(--tone);
+  transform: rotate(var(--glyph-tilt, 0deg));
   transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium),
     background var(--dur-med) var(--ease-premium), color var(--dur-med) var(--ease-premium);
 }
 
+.curr-hero__letter:nth-child(odd) .curr-hero__letter-glyph { --glyph-tilt: -4deg; }
+.curr-hero__letter:nth-child(even) .curr-hero__letter-glyph { --glyph-tilt: 4deg; }
+
 .curr-hero__letter.is-active .curr-hero__letter-glyph {
-  transform: translateY(-8px) scale(1.08);
-  background: var(--color-primary);
-  color: var(--color-surface);
-  box-shadow: var(--shadow-glow);
+  transform: rotate(0deg) translateY(-8px) scale(1.08);
+  background: var(--tone);
+  color: #fff;
+  box-shadow: 6px 9px 0 -1px var(--tone-soft);
 }
 
 .curr-hero__letter-word {
@@ -181,7 +181,7 @@
   transform: translateY(-4px);
   transition: opacity var(--dur-fast) var(--ease-premium), transform var(--dur-fast) var(--ease-premium),
     color var(--dur-fast) var(--ease-premium);
-  max-width: 84px;
+  max-width: 88px;
   text-align: center;
   line-height: 1.2;
 }
@@ -189,39 +189,55 @@
 .curr-hero__letter.is-active .curr-hero__letter-word {
   opacity: 1;
   transform: translateY(0);
-  color: var(--color-primary-dark);
+  color: var(--tone);
 }
 
 .curr-hero__letters-caption {
-  margin-top: 6px;
-  font-size: 0.86rem;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.72);
-  max-width: 52ch;
+  margin-top: 8px;
+  font-family: var(--font-accent);
+  font-size: clamp(1.05rem, 3.4vw, 1.25rem);
+  color: var(--color-primary);
+  max-width: 40ch;
+}
+
+.curr-hero__wave {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 48px;
 }
 
 @media (min-width: 576px) {
   .curr-hero__letter {
-    width: 64px;
-    gap: 8px;
+    width: 68px;
   }
-
   .curr-hero__letter-glyph {
-    width: 56px;
-    height: 56px;
-    border-radius: var(--radius-md);
-    font-size: 1.5rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    font-size: 1.7rem;
   }
 }
 
 @media (min-width: 768px) {
   .curr-hero {
-    padding: 76px 0 90px;
+    padding-top: 24px;
+  }
+  .curr-hero__letters {
+    gap: 14px;
+  }
+  .curr-hero__wave {
+    height: 70px;
   }
 }
 
 @media (min-width: 992px) {
-  .curr-hero {
-    padding: 90px 0 100px;
+  .curr-hero__inner {
+    gap: 18px;
+    padding-bottom: 48px;
+  }
+  .curr-hero__letters {
+    gap: 16px;
   }
 }

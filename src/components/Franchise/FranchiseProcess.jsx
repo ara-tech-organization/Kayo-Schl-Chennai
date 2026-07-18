@@ -11,12 +11,23 @@ import {
   Sparkles,
   Users2,
 } from "lucide-react";
+import { Star } from "lucide-react";
 import { motion } from "framer-motion";
 import SectionHeading from "../common/SectionHeading";
 import Reveal from "../common/Reveal";
+import FloatingShapes from "../common/FloatingShapes";
 import "./FranchiseProcess.css";
 
 const EASE = [0.16, 1, 0.3, 1];
+
+const SHAPES = [
+  { type: "blob", color: "var(--color-primary-light)", size: 160, top: "8%", left: "-3%", speed: 0.28, float: 18, dur: 8 },
+  { type: "blob", color: "var(--color-secondary-light)", size: 140, bottom: "10%", right: "-2%", speed: 0.22, float: 16, dur: 9 },
+  { type: "star", color: "var(--color-gold)", size: 30, top: "18%", right: "7%", speed: 0.38, float: 18, dur: 6, rotate: 16 },
+  { type: "plus", color: "var(--color-orange)", size: 22, bottom: "22%", left: "7%", speed: 0.44, float: 14, dur: 5, opacity: 0.7 },
+  { type: "dot", color: "var(--color-secondary)", size: 18, top: "40%", left: "4%", speed: 0.5, float: 22, dur: 6, opacity: 0.6 },
+  { type: "squiggle", color: "var(--color-primary)", size: 66, bottom: "16%", right: "12%", speed: 0.3, float: 12, dur: 7, opacity: 0.4 },
+];
 
 const STEPS = [
   {
@@ -78,15 +89,34 @@ export default function FranchiseProcess() {
   }
 
   useEffect(() => {
-    if (paused) return;
+    if (paused) return undefined;
     const timer = setInterval(() => {
       setActive((a) => (a + 1) % STEPS.length);
-    }, 1200);
+    }, 2400);
     return () => clearInterval(timer);
   }, [paused]);
 
   return (
     <section className="fr-process" id="how-to-apply">
+      <FloatingShapes items={SHAPES} />
+
+      <motion.span
+        className="fr-process__spark fr-process__spark--a"
+        aria-hidden="true"
+        animate={{ y: [0, -12, 0], rotate: [0, 12, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Sparkles size={18} strokeWidth={1.8} />
+      </motion.span>
+      <motion.span
+        className="fr-process__spark fr-process__spark--b"
+        aria-hidden="true"
+        animate={{ y: [0, 12, 0], rotate: [0, -12, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+      >
+        <Star size={15} strokeWidth={1.8} fill="currentColor" />
+      </motion.span>
+
       <div className="container">
         <SectionHeading
           eyebrow="Your Next Steps"
@@ -130,6 +160,7 @@ export default function FranchiseProcess() {
                   transition={{ duration: 0.55, ease: EASE }}
                   style={{ pointerEvents: visible ? "auto" : "none" }}
                 >
+                  <span className="fr-process__blob" aria-hidden="true" />
                   <span className="fr-process__step-label">Step {i + 1}</span>
                   <span className="fr-process__icon">
                     <s.icon strokeWidth={1.7} />
@@ -153,11 +184,7 @@ export default function FranchiseProcess() {
 
         <div className="fr-process__dots" aria-hidden="true">
           {STEPS.map((s, i) => (
-            <span
-              key={s.title}
-              className={active === i ? "is-active" : ""}
-              onClick={() => setActive(i)}
-            />
+            <span key={s.title} className={active === i ? "is-active" : ""} onClick={() => setActive(i)} />
           ))}
         </div>
 

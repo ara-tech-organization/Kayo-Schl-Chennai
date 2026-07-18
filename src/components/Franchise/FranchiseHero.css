@@ -1,35 +1,12 @@
+/* ==========================================================================
+   Franchise Hero — split copy + framed photo with orbiting benefit badges
+   ========================================================================== */
 .fr-hero {
   position: relative;
-  padding: 56px 0 70px;
+  padding: 32px 0 0;
   overflow: hidden;
-  background: var(--color-bg);
-  min-height: 480px;
-  display: flex;
-  align-items: center;
-}
-
-.fr-hero__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.fr-hero__bg-img {
-  position: absolute;
-  inset: -20% 0;
-  width: 100%;
-  height: 140%;
-  object-fit: cover;
-  object-position: center;
-  will-change: transform;
-}
-
-.fr-hero__bg-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(10, 8, 14, 0.72);
+  isolation: isolate;
+  background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg-deep) 100%);
 }
 
 .fr-hero__backdrop {
@@ -39,35 +16,33 @@
   pointer-events: none;
 }
 
-.fr-hero__blob {
+.fr-hero__mesh {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(2px);
+  inset: 0;
+  background: radial-gradient(680px 420px at 8% 6%, var(--color-secondary-light) 0%, transparent 58%),
+    radial-gradient(620px 460px at 94% 16%, var(--color-primary-light) 0%, transparent 56%),
+    radial-gradient(720px 480px at 50% 100%, var(--color-gold-light) 0%, transparent 55%);
+  opacity: 0.7;
 }
 
-.fr-hero__blob--a {
-  width: 480px;
-  height: 480px;
-  top: -220px;
-  right: -160px;
-  background: radial-gradient(circle at 30% 30%, var(--color-secondary-light), transparent 70%);
-  opacity: 0.85;
+.fr-hero__grain {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(146, 43, 141, 0.07) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
 }
 
-.fr-hero__blob--b {
-  width: 360px;
-  height: 360px;
-  bottom: -200px;
-  left: -120px;
-  background: radial-gradient(circle at 60% 40%, var(--color-primary-light), transparent 70%);
-  opacity: 0.9;
-}
-
-.fr-hero__inner {
+.fr-hero__grid {
   position: relative;
   z-index: 1;
-  max-width: 880px;
-  margin-inline: auto;
+  display: grid;
+  gap: 40px;
+  align-items: center;
+  padding: 16px 0 48px;
+}
+
+/* ---- Copy ---- */
+.fr-hero__copy {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,110 +56,219 @@
   gap: 8px;
   font-size: 0.82rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.72);
-  margin-bottom: 4px;
+  color: var(--color-ink-faint);
 }
 
 .fr-hero__crumb a {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--color-ink-soft);
   transition: color var(--dur-fast) var(--ease-premium);
 }
 
 .fr-hero__crumb a:hover {
-  color: #fff;
-}
-
-.fr-hero__eyebrow {
-  justify-content: center;
-  color: var(--color-gold-light, #fff);
-}
-
-.fr-hero__eyebrow::before {
-  background: var(--color-gold-light, #fff);
+  color: var(--color-primary-dark);
 }
 
 .fr-hero__title {
-  font-size: clamp(2rem, 4.4vw, 3.1rem);
-  max-width: 20ch;
+  font-size: clamp(1.9rem, 4.4vw, 3rem);
+  max-width: 18ch;
   line-height: 1.16;
-  color: #fff;
+}
+
+.fr-hero__mark {
+  position: relative;
+  color: var(--color-primary-dark);
+  white-space: normal;
+}
+
+.fr-hero__mark::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: 4px;
+  height: 32%;
+  z-index: -1;
+  background: var(--color-gold-light);
+  border-radius: 6px;
+  transform: rotate(-1.2deg);
 }
 
 .fr-hero__lead {
   font-size: 1.02rem;
-  max-width: 68ch;
-  color: rgba(255, 255, 255, 0.88);
+  max-width: 56ch;
 }
 
-.fr-hero__highlights {
+.fr-hero__actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-top: 12px;
+  gap: 18px;
+  margin-top: 8px;
 }
 
-.fr-hero__chip {
+.fr-hero__link {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-primary-dark);
+  border-bottom: 2px dashed var(--color-primary);
+  padding-bottom: 2px;
+  transition: color var(--dur-fast) var(--ease-premium);
+}
+
+.fr-hero__link:hover {
+  color: var(--color-primary);
+}
+
+/* ---- Framed photo + badges ---- */
+.fr-hero__visual {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 24px auto 40px;
+  aspect-ratio: 4 / 4.4;
+}
+
+.fr-hero__frame {
+  position: absolute;
+  inset: 8% -5% -8% 5%;
+  border-radius: 32px;
+  border: 2px dashed var(--color-primary);
+  opacity: 0.5;
+}
+
+.fr-hero__photo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 6px solid var(--color-surface);
+  box-shadow: var(--shadow-pop);
+  transform: rotate(-2deg);
+  transition: transform var(--dur-med) var(--ease-premium);
+}
+
+.fr-hero__visual:hover .fr-hero__photo {
+  transform: rotate(0deg);
+}
+
+.fr-hero__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fr-hero__sparkle {
+  position: absolute;
+  top: 2%;
+  left: 4%;
+  z-index: 3;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--color-secondary-light);
+  color: var(--color-secondary-dark);
+  box-shadow: var(--shadow-soft);
+}
+
+.fr-hero__badge {
+  --tone: var(--color-primary);
+  --tone-dark: var(--color-primary-dark);
+  --tone-soft: var(--color-primary-light);
+  position: absolute;
+  z-index: 3;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 18px;
+  padding: 9px 15px 9px 9px;
   border-radius: var(--radius-pill);
   background: var(--color-surface);
-  border: 1px solid var(--color-line-soft);
-  box-shadow: var(--shadow-soft);
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: var(--color-primary-dark);
-  transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium);
-}
-
-.fr-hero__chip:hover {
-  transform: translateY(-6px) scale(1.03);
+  border: 2px solid var(--tone);
   box-shadow: var(--shadow-lift);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--tone-dark);
+  white-space: nowrap;
+  will-change: transform;
 }
 
-.fr-hero__chip:nth-child(2) {
-  color: var(--color-secondary-dark);
+.fr-hero__badge--secondary { --tone: var(--color-secondary); --tone-dark: var(--color-secondary-dark); --tone-soft: var(--color-secondary-light); }
+.fr-hero__badge--gold { --tone: var(--color-gold); --tone-dark: var(--color-orange-dark); --tone-soft: var(--color-gold-light); }
+
+.fr-hero__badge-icon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--tone-soft);
+  color: var(--tone-dark);
 }
 
-.fr-hero__chip:nth-child(3) {
-  color: var(--color-orange-dark);
+.fr-hero__badge--tl { top: 8%; left: -10%; }
+.fr-hero__badge--tr { top: 26%; right: -12%; }
+.fr-hero__badge--br { bottom: 6%; right: -8%; }
+
+.fr-hero__wave {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 48px;
 }
 
-.fr-hero__cta {
-  margin-top: 18px;
+@media (max-width: 479.98px) {
+  .fr-hero__badge { font-size: 0.72rem; padding: 7px 11px 7px 7px; }
+  .fr-hero__badge--tl { left: -2%; }
+  .fr-hero__badge--tr { right: -2%; }
+  .fr-hero__badge--br { right: -2%; }
 }
 
 @media (min-width: 576px) {
-  .fr-hero {
-    padding: 64px 0 78px;
-  }
-
-  .fr-hero__inner {
-    gap: 18px;
+  .fr-hero__mark {
+    white-space: nowrap;
   }
 }
 
 @media (min-width: 768px) {
   .fr-hero {
-    padding: 76px 0 90px;
+    padding-top: 24px;
+  }
+  .fr-hero__wave {
+    height: 70px;
   }
 }
 
 @media (min-width: 992px) {
-  .fr-hero {
-    padding: 92px 0 108px;
+  .fr-hero__grid {
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 40px;
   }
-
-  .fr-hero__inner {
-    gap: 20px;
+  .fr-hero__copy {
+    align-items: flex-start;
+    text-align: left;
+    /* extra left breathing room for the copy on desktop */
+    padding-left: clamp(24px, 3vw, 48px);
   }
-
-  .fr-hero__lead {
-    font-size: 1.08rem;
+  .fr-hero__actions {
+    justify-content: flex-start;
+  }
+  /* Center the photo in its column so the slack splits evenly on both sides at
+     every desktop width — right-aligning piled all the gap on the left and
+     jammed the photo + orbiting badges against the right edge. */
+  .fr-hero__visual {
+    max-width: 380px;
+    margin-inline: auto;
+  }
+  .fr-hero__badge--tr,
+  .fr-hero__badge--br {
+    right: -3%;
   }
 }

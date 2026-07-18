@@ -47,9 +47,16 @@
 /* ---- Asymmetric decorative body ---- */
 .footer__body {
   display: grid;
-  gap: 36px 24px;
-  grid-template-columns: 1fr;
+  gap: 32px 22px;
+  grid-template-columns: repeat(2, 1fr);
   padding: 8px 0 44px;
+}
+
+/* on phones: brand + contact card span the full width, the two link lists
+   share one row as two columns */
+.footer__brand,
+.footer__postcard {
+  grid-column: 1 / -1;
 }
 
 .footer__logo {
@@ -246,6 +253,19 @@ a.footer__pc-line:hover {
   display: inline-block;
 }
 
+.footer__credit-link {
+  font-weight: 700;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--color-primary);
+  transition: color var(--dur-fast) var(--ease-premium);
+}
+
+.footer__credit-link:hover {
+  color: var(--color-primary);
+}
+
 @keyframes footer-heart {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.22); }
@@ -277,5 +297,11 @@ a.footer__pc-line:hover {
     grid-template-columns: 1.7fr 1fr 1fr 1.4fr;
     gap: 48px;
     padding: 16px 0 52px;
+  }
+
+  /* back to individual columns on desktop */
+  .footer__brand,
+  .footer__postcard {
+    grid-column: auto;
   }
 }

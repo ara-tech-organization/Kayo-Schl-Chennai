@@ -2,6 +2,21 @@
   position: relative;
   padding: 64px 0 48px;
   background: var(--color-bg);
+  overflow: hidden;
+}
+
+.pol-spotlight__blob {
+  width: 340px;
+  height: 340px;
+  top: -120px;
+  right: -110px;
+  background: radial-gradient(circle at 40% 40%, var(--color-secondary-light), transparent 70%);
+  z-index: 0;
+}
+
+.pol-spotlight__container {
+  position: relative;
+  z-index: 1;
 }
 
 .pol-spotlight__head {
@@ -109,6 +124,21 @@
 .pol-spotlight__tab.is-active {
   border-color: transparent;
   box-shadow: var(--shadow-lift);
+  transform: translateX(4px);
+}
+
+/* playful tinted fill on the active tab, per tone */
+.pol-spotlight__tab--primary.is-active {
+  background: var(--color-primary-light);
+}
+.pol-spotlight__tab--secondary.is-active {
+  background: var(--color-secondary-light);
+}
+.pol-spotlight__tab--gold.is-active {
+  background: var(--color-gold-light);
+}
+.pol-spotlight__tab--orange.is-active {
+  background: var(--color-orange-light);
 }
 
 .pol-spotlight__tab.is-active .pol-spotlight__tab-arrow {
@@ -219,56 +249,167 @@
   --pol-accent: var(--color-orange);
 }
 
+/* ---------- Playful, kid-friendly story card ---------- */
 .pol-spotlight__card {
   position: relative;
   z-index: 1;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.pol-spotlight__card-icon {
+/* bouncy medal with the big number */
+.pol-spotlight__medal {
+  position: relative;
   display: grid;
   place-items: center;
-  width: 66px;
-  height: 66px;
-  border-radius: 20px;
-  background: var(--color-surface);
-  color: var(--pol-strong);
-  box-shadow: var(--shadow-soft);
-  margin-bottom: 20px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin-bottom: 18px;
+  background: radial-gradient(circle at 35% 28%, var(--pol-accent), var(--pol-strong) 120%);
+  border: 5px solid var(--color-surface);
+  box-shadow: var(--shadow-pop);
+  will-change: transform;
 }
 
-.pol-spotlight__card-count {
-  display: block;
+.pol-spotlight__medal-icon {
+  display: grid;
+  place-items: center;
+  color: #fff;
+}
+
+.pol-spotlight__medal--gold .pol-spotlight__medal-icon,
+.pol-spotlight__stage--gold .pol-spotlight__medal-icon {
+  color: var(--color-ink);
+}
+
+/* number sticker pinned to the medal */
+.pol-spotlight__medal-num {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  display: grid;
+  place-items: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 6px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--pol-strong);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1;
+  border: 3px solid var(--pol-accent);
+  box-shadow: var(--shadow-soft);
+  transform: rotate(-8deg);
+}
+
+/* wavy ribbon tagline */
+.pol-spotlight__ribbon {
+  display: inline-block;
+  padding: 7px 18px;
+  margin-bottom: 12px;
+  border-radius: var(--radius-pill);
+  background: var(--pol-accent);
+  color: #fff;
   font-family: var(--font-display);
   font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--pol-strong);
   letter-spacing: 0.06em;
-  margin-bottom: 10px;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-soft);
+  transform: rotate(-1.5deg);
 }
 
-.pol-spotlight__card-tagline {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: var(--radius-pill);
-  background: var(--color-surface);
-  color: var(--pol-strong);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 14px;
+.pol-spotlight__stage--gold .pol-spotlight__ribbon {
+  color: var(--color-ink);
 }
 
 .pol-spotlight__card h3 {
-  font-size: clamp(1.3rem, 4.4vw, 1.6rem);
+  font-size: clamp(1.5rem, 4.6vw, 2rem);
   margin-bottom: 14px;
-  max-width: 24ch;
+  max-width: 20ch;
 }
 
-.pol-spotlight__card p {
-  font-size: 1rem;
-  max-width: 62ch;
+/* text in a soft speech bubble */
+.pol-spotlight__bubble {
+  position: relative;
+  padding: 20px 22px;
+  border-radius: 22px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  font-size: 0.98rem;
+  color: var(--color-ink-soft);
+  max-width: 56ch;
+}
+
+.pol-spotlight__bubble::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 18px;
+  height: 18px;
+  background: var(--color-surface);
+  border-radius: 4px;
+}
+
+/* floating confetti */
+.pol-spotlight__confetti {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pol-spotlight__confetti--a {
+  top: 4%;
+  left: 6%;
+  color: var(--color-gold);
+}
+
+.pol-spotlight__confetti--b {
+  top: 10%;
+  right: 8%;
+  color: var(--pol-strong);
+}
+
+.pol-spotlight__confetti--c,
+.pol-spotlight__confetti--d {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.pol-spotlight__confetti--c {
+  bottom: 22%;
+  left: 10%;
+  background: var(--color-secondary);
+  opacity: 0.7;
+}
+
+.pol-spotlight__confetti--d {
+  bottom: 14%;
+  right: 12%;
+  width: 10px;
+  height: 10px;
+  background: var(--color-orange);
+  opacity: 0.7;
+}
+
+@media (min-width: 768px) {
+  .pol-spotlight__medal {
+    width: 124px;
+    height: 124px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pol-spotlight__medal {
+    transform: none !important;
+  }
 }
 
 .pol-spotlight__dots {

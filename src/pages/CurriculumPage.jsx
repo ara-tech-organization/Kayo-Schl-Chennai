@@ -1,4 +1,5 @@
 import PageLayout from "../components/layout/PageLayout";
+import ScrollProgress from "../components/common/ScrollProgress";
 import CurriculumHero from "../components/Curriculum/CurriculumHero";
 import FourPillars from "../components/Curriculum/FourPillars";
 import IntelligencesRail from "../components/Curriculum/IntelligencesRail";
@@ -29,6 +30,7 @@ export default function CurriculumPage() {
 
   return (
     <PageLayout>
+      <ScrollProgress />
       <CurriculumHero />
       <FourPillars />
       <IntelligencesRail />

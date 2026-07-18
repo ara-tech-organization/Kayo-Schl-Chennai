@@ -1,4 +1,5 @@
 import PageLayout from "../components/layout/PageLayout";
+import ScrollProgress from "../components/common/ScrollProgress";
 import FranchiseHero from "../components/Franchise/FranchiseHero";
 import FranchiseWhyPartner from "../components/Franchise/FranchiseWhyPartner";
 import FranchiseSupport from "../components/Franchise/FranchiseSupport";

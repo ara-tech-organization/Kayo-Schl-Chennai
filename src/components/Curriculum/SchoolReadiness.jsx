@@ -10,7 +10,15 @@ import {
 } from "lucide-react";
 import SectionHeading from "../common/SectionHeading";
 import Reveal from "../common/Reveal";
+import FloatingShapes from "../common/FloatingShapes";
 import "./SchoolReadiness.css";
+
+const SHAPES = [
+  { type: "blob", color: "var(--color-secondary-light)", size: 160, top: "4%", left: "-3%", speed: 0.28, float: 18, dur: 8 },
+  { type: "blob", color: "var(--color-primary-light)", size: 150, bottom: "10%", right: "-2%", speed: 0.22, float: 16, dur: 9 },
+  { type: "star", color: "var(--color-gold)", size: 30, top: "16%", right: "7%", speed: 0.38, float: 18, dur: 6, rotate: 16 },
+  { type: "plus", color: "var(--color-orange)", size: 22, bottom: "18%", left: "8%", speed: 0.44, float: 14, dur: 5, opacity: 0.7 },
+];
 
 const READINESS = [
   {
@@ -68,6 +76,7 @@ const READINESS = [
 export default function SchoolReadiness() {
   return (
     <section className="readiness" id="readiness">
+      <FloatingShapes items={SHAPES} />
       <div className="container">
         <Reveal y={16} className="readiness__intro">
           <p>
@@ -90,12 +99,13 @@ export default function SchoolReadiness() {
             <Reveal
               as="div"
               y={24}
-              delay={0.06 * (i % 4)}
+              delay={0.05 * (i % 4)}
               key={r.title}
               className={`readiness__card readiness__card--${r.tone} ${
                 r.size ? `readiness__card--${r.size}` : ""
               }`}
             >
+              <span className="readiness__tape" aria-hidden="true" />
               <span className="readiness__icon">
                 <r.icon strokeWidth={1.6} />
               </span>
@@ -109,12 +119,19 @@ export default function SchoolReadiness() {
 
         <Reveal y={20} delay={0.15} className="readiness__closing">
           <p>
-            Graduates of KAYO International enter primary school not just academically prepared,
-            but as confident, curious, well-rounded children who genuinely enjoy learning. That is
-            the difference a thoughtfully designed curriculum makes.
+            Graduates of KAYO International enter primary school not just academically prepared, but
+            as confident, curious, well-rounded children who genuinely enjoy learning. That is the
+            difference a thoughtfully designed curriculum makes.
           </p>
         </Reveal>
       </div>
+
+      <svg className="readiness__wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+        <path
+          d="M0,44 C240,84 480,88 720,54 C960,20 1200,6 1440,48 L1440,90 L0,90 Z"
+          fill="var(--color-bg)"
+        />
+      </svg>
     </section>
   );
 }

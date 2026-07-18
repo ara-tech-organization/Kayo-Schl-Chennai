@@ -1,7 +1,17 @@
+/* ==========================================================================
+   School Readiness — playful sticker bento
+   ========================================================================== */
 .readiness {
   position: relative;
-  padding: 64px 0 70px;
-  background: var(--color-bg);
+  padding: var(--section-pad) 0 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+}
+
+.readiness .container {
+  position: relative;
+  z-index: 1;
 }
 
 .readiness__intro {
@@ -11,28 +21,29 @@
 }
 
 .readiness__intro p {
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--color-ink-soft);
+  font-family: var(--font-accent);
+  font-size: clamp(1.1rem, 3.6vw, 1.3rem);
+  color: var(--color-primary);
 }
 
 .readiness__lead-in {
   text-align: center;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: clamp(0.98rem, 2.6vw, 1.05rem);
   color: var(--color-ink);
   margin-top: 8px;
 }
 
 .readiness__bento {
-  margin-top: 28px;
+  margin-top: 30px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 20px 18px;
 }
 
 .readiness__closing {
   max-width: 780px;
-  margin: 40px auto 0;
+  margin: 44px auto 0;
   text-align: center;
 }
 
@@ -40,35 +51,59 @@
   font-size: 0.98rem;
 }
 
+/* ---- Sticker card ---- */
 .readiness__card {
+  --tone: var(--color-primary);
+  --tone-dark: var(--color-primary-dark);
+  --tone-soft: var(--color-primary-light);
   position: relative;
-  padding: 28px 26px;
-  border-radius: var(--radius-lg);
+  padding: 26px 24px;
+  border-radius: 24px;
   background: var(--color-surface);
-  border: 1px solid var(--color-line-soft);
-  box-shadow: var(--shadow-soft);
+  border: 2px solid var(--tone);
+  box-shadow: 6px 8px 0 -1px var(--tone-soft);
   overflow: hidden;
-  transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium),
-    border-color var(--dur-med) var(--ease-premium);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium);
 }
 
+.readiness__bento > .readiness__card:nth-child(odd) { --tilt: -1deg; }
+.readiness__bento > .readiness__card:nth-child(even) { --tilt: 1deg; }
+
+.readiness__card:hover {
+  transform: rotate(0deg) translateY(-8px);
+  box-shadow: 9px 13px 0 -1px var(--tone-soft);
+}
+
+.readiness__card--secondary { --tone: var(--color-secondary); --tone-dark: var(--color-secondary-dark); --tone-soft: var(--color-secondary-light); }
+.readiness__card--gold { --tone: var(--color-gold); --tone-dark: var(--color-orange-dark); --tone-soft: var(--color-gold-light); }
+.readiness__card--orange { --tone: var(--color-orange); --tone-dark: var(--color-orange-dark); --tone-soft: var(--color-orange-light); }
+
+/* Playful corner blob */
 .readiness__card::after {
   content: "";
   position: absolute;
-  top: -40px;
-  right: -40px;
+  top: -44px;
+  right: -44px;
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  opacity: 0.5;
-  background: var(--color-line-soft);
+  opacity: 0.55;
+  background: var(--tone-soft);
   z-index: 0;
 }
 
-.readiness__card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lift);
-  border-color: transparent;
+.readiness__tape {
+  position: absolute;
+  top: -8px;
+  left: 26px;
+  width: 58px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px dashed rgba(38, 35, 29, 0.18);
+  transform: rotate(-6deg);
+  border-radius: 3px;
+  z-index: 2;
 }
 
 .readiness__icon {
@@ -76,18 +111,23 @@
   z-index: 1;
   display: grid;
   place-items: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 15px;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
   margin-bottom: 16px;
-  background: var(--color-primary-light);
-  color: var(--color-primary-dark);
+  background: var(--tone-soft);
+  color: var(--tone-dark);
+  transition: transform var(--dur-med) var(--ease-premium);
+}
+
+.readiness__card:hover .readiness__icon {
+  transform: scale(1.1) rotate(-8deg);
 }
 
 .readiness__card h3 {
   position: relative;
   z-index: 1;
-  font-size: 1.08rem;
+  font-size: 1.1rem;
   margin-bottom: 8px;
 }
 
@@ -97,85 +137,60 @@
   font-size: 0.9rem;
 }
 
-.readiness__card--secondary .readiness__icon {
-  background: var(--color-secondary-light);
-  color: var(--color-secondary-dark);
-}
-
-.readiness__card--secondary::after {
-  background: var(--color-secondary-light);
-}
-
-.readiness__card--gold .readiness__icon {
-  background: var(--color-gold-light);
-  color: var(--color-orange-dark);
-}
-
-.readiness__card--gold::after {
-  background: var(--color-gold-light);
-}
-
-.readiness__card--orange .readiness__icon {
-  background: var(--color-orange-light);
-  color: var(--color-orange-dark);
-}
-
-.readiness__card--orange::after {
-  background: var(--color-orange-light);
+.readiness__wave {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin-top: 56px;
 }
 
 @media (min-width: 576px) {
-  .readiness {
-    padding: 76px 0 84px;
-  }
-
   .readiness__bento {
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    gap: 24px 20px;
   }
 }
 
 @media (min-width: 768px) {
-  .readiness {
-    padding: 90px 0 100px;
+  .readiness__wave {
+    height: 80px;
   }
 }
 
 @media (min-width: 992px) {
-  .readiness {
-    padding: 100px 0 120px;
-  }
-
   .readiness__bento {
     grid-template-columns: repeat(4, 1fr);
   }
   .readiness__card--lg {
     grid-column: span 2;
   }
-
   .readiness__card--full {
     grid-column: 1 / -1;
     display: flex;
     align-items: flex-start;
     gap: 28px;
   }
-
   .readiness__card--full .readiness__icon {
     flex-shrink: 0;
     margin-bottom: 0;
   }
-
   .readiness__card--full .readiness__card-body {
     display: flex;
     flex-direction: column;
     gap: 4px;
   }
-
   .readiness__card--full h3 {
     margin-bottom: 2px;
   }
-
   .readiness__card--full p {
-    max-width: 70ch;
+    max-width: 74ch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .readiness__card {
+    transform: none !important;
   }
 }

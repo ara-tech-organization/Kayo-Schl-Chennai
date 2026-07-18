@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { CheckCircle2, Clock3, Phone, Send } from "lucide-react";
 import Reveal from "../common/Reveal";
+import FloatingShapes from "../common/FloatingShapes";
 import "./FranchiseEnquiryForm.css";
+
+const SHAPES = [
+  { type: "blob", color: "var(--color-secondary-light)", size: 160, top: "6%", left: "-3%", speed: 0.28, float: 18, dur: 8 },
+  { type: "star", color: "var(--color-gold)", size: 28, top: "16%", right: "6%", speed: 0.38, float: 18, dur: 6, rotate: 16 },
+  { type: "plus", color: "var(--color-orange)", size: 22, bottom: "16%", left: "8%", speed: 0.44, float: 14, dur: 5, opacity: 0.7 },
+];
 
 export default function FranchiseEnquiryForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -13,6 +20,7 @@ export default function FranchiseEnquiryForm() {
 
   return (
     <section className="fr-enquiry" id="enquiry">
+      <FloatingShapes items={SHAPES} />
       <div className="container fr-enquiry__grid">
         <Reveal x={-30} y={0} className="fr-enquiry__intro">
           <span className="eyebrow">Enquire Now</span>

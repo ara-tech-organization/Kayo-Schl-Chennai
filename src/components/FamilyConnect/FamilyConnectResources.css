@@ -206,10 +206,22 @@
   color: var(--color-ink-soft);
 }
 
+@media (min-width: 768px) {
+  /* two sticker notes sit side by side on tablet before they stack in the sidebar */
+  .fc-resources__side {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (min-width: 992px) {
   .fc-resources__grid {
     grid-template-columns: 1.35fr 0.85fr;
     align-items: start;
     gap: 40px;
+  }
+
+  /* back to a single stacked column inside the narrow sidebar */
+  .fc-resources__side {
+    grid-template-columns: 1fr;
   }
 }

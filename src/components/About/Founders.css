@@ -200,49 +200,45 @@
 /* ==========================================================================
    Responsive
    ========================================================================== */
+/* Phone/tablet-portrait: cards stack single-column, so keep them upright
+   instead of the playful tilt (which reads as misaligned on narrow screens).
+   framer-motion applies the tilt as an inline transform, so override with
+   !important. The tilt returns at >=860px where the cards sit side-by-side. */
+@media (max-width: 859.98px) {
+  .fcard {
+    transform: none !important;
+  }
+}
+
 @media (min-width: 860px) {
   .founders__grid {
     grid-template-columns: repeat(2, 1fr);
-    /* head, name, role, tags, quote, bios — shared row tracks both cards align to */
-    grid-template-rows: repeat(6, auto);
+    column-gap: 44px; /* more breathing room between the two cards */
+    align-items: stretch; /* equal-height cards */
   }
 
-  /* Each card becomes a subgrid so every row lines up across both cards */
+  /* Card + body become flex columns so the shorter card fills its full height */
   .fcard {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: subgrid;
-    grid-row: span 6;
-    row-gap: 0;
-    height: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
-  .fcard__head {
-    grid-row: 1;
-  }
-
-  /* Let the body's children participate directly in the card subgrid */
   .fcard__body {
-    display: contents;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
-  .fcard__name {
-    grid-row: 2;
-    margin-top: 18px;
-  }
-  .fcard__role {
-    grid-row: 3;
-  }
-  .fcard__tags {
-    grid-row: 4;
-    align-content: start;
-  }
+  /* Keep the two quote boxes the same height so the quotes stay tidy */
   .fcard__quote {
-    grid-row: 5;
+    min-height: 8.25rem;
   }
+
+  /* Anchor the bio to the bottom: extra height becomes even spacing, not a bottom void */
   .fcard__bios {
-    grid-row: 6;
-    align-self: start;
+    margin-top: auto;
+    padding-top: 8px;
   }
 }
 

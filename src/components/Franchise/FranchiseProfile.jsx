@@ -9,36 +9,48 @@ import {
 } from "lucide-react";
 import SectionHeading from "../common/SectionHeading";
 import Reveal from "../common/Reveal";
+import FloatingShapes from "../common/FloatingShapes";
 import "./FranchiseProfile.css";
+
+const SHAPES = [
+  { type: "blob", color: "var(--color-gold-light)", size: 150, top: "8%", right: "-2%", speed: 0.26, float: 16, dur: 9 },
+  { type: "plus", color: "var(--color-primary)", size: 22, bottom: "16%", left: "6%", speed: 0.44, float: 14, dur: 5, opacity: 0.6 },
+];
 
 const TRAITS = [
   {
     icon: HeartHandshake,
+    tone: "primary",
     title: "Child-Focused",
     text: "Passionate about children and genuinely invested in their wellbeing and development.",
   },
   {
     icon: Banknote,
+    tone: "secondary",
     title: "Financially Ready",
     text: "Financially prepared to invest in setting up a premium preschool centre.",
   },
   {
     icon: ShieldCheck,
+    tone: "gold",
     title: "Quality-Committed",
     text: "Committed to quality and willing to uphold Kayo's high standards for safety, hygiene, and education.",
   },
   {
     icon: MapPinned,
+    tone: "orange",
     title: "Locally Connected",
     text: "Locally connected with good knowledge of their chosen neighbourhood or city.",
   },
   {
     icon: Handshake,
+    tone: "primary",
     title: "Business-Minded",
     text: "Business-minded with the drive to grow a sustainable, profitable enterprise.",
   },
   {
     icon: UserRoundCog,
+    tone: "secondary",
     title: "Hands-On Leader",
     text: "Hands-on or willing to appoint a dedicated centre director for day-to-day operations.",
   },
@@ -57,6 +69,7 @@ export default function FranchiseProfile() {
 
   return (
     <section className="fr-profile" id="profile">
+      <FloatingShapes items={SHAPES} />
       <div className="container">
         <SectionHeading
           eyebrow="Who We're Looking For"
@@ -71,7 +84,7 @@ export default function FranchiseProfile() {
               y={22}
               delay={0.07 * i}
               key={t.title}
-              className="fr-profile__flip"
+              className={`fr-profile__flip fr-profile__flip--${t.tone}`}
             >
               <button
                 type="button"

@@ -1,68 +1,83 @@
+/* ==========================================================================
+   Awards — playful sticker stat cards with animated counters
+   ========================================================================== */
 .fr-awards {
+  position: relative;
   padding: 48px 0 64px;
+  overflow: hidden;
+  isolation: isolate;
   background: var(--color-bg);
 }
 
-@media (min-width: 768px) {
-  .fr-awards {
-    padding: 56px 0 84px;
-  }
-}
-
-@media (min-width: 992px) {
-  .fr-awards {
-    padding: 60px 0 100px;
-  }
+.fr-awards .container {
+  position: relative;
+  z-index: 1;
 }
 
 .fr-awards__grid {
   margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+  gap: 26px 20px;
 }
 
 .fr-awards__card {
+  --tone: var(--color-gold);
+  --tone-dark: var(--color-orange-dark);
+  --tone-soft: var(--color-gold-light);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 8px;
   background: var(--color-surface);
-  border: 1px solid var(--color-line-soft);
-  border-radius: var(--radius-md);
-  padding: 30px 18px;
-  transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium),
-    border-color var(--dur-med) var(--ease-premium);
+  border: 2px solid var(--tone);
+  border-radius: 22px;
+  padding: 32px 18px;
+  box-shadow: 5px 8px 0 -1px var(--tone-soft);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium);
 }
+
+.fr-awards__grid > .fr-awards__card:nth-child(odd) { --tilt: -1.5deg; }
+.fr-awards__grid > .fr-awards__card:nth-child(even) { --tilt: 1.5deg; }
 
 .fr-awards__card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lift);
-  border-color: transparent;
+  transform: rotate(0deg) translateY(-7px);
+  box-shadow: 8px 12px 0 -1px var(--tone-soft);
 }
 
+.fr-awards__card--primary { --tone: var(--color-primary); --tone-dark: var(--color-primary-dark); --tone-soft: var(--color-primary-light); }
+.fr-awards__card--secondary { --tone: var(--color-secondary); --tone-dark: var(--color-secondary-dark); --tone-soft: var(--color-secondary-light); }
+.fr-awards__card--orange { --tone: var(--color-orange); --tone-dark: var(--color-orange-dark); --tone-soft: var(--color-orange-light); }
+
 .fr-awards__icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
   display: grid;
   place-items: center;
-  background: var(--color-gold-light);
-  color: var(--color-gold);
+  background: var(--tone-soft);
+  color: var(--tone-dark);
   margin-bottom: 4px;
+  transition: transform var(--dur-med) var(--ease-premium);
+}
+
+.fr-awards__card:hover .fr-awards__icon {
+  transform: scale(1.1) rotate(-8deg);
 }
 
 .fr-awards__card strong {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: var(--color-ink);
 }
 
 .fr-awards__label {
+  font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.92rem;
-  color: var(--color-ink);
+  font-size: 0.95rem;
+  color: var(--tone-dark);
 }
 
 .fr-awards__meta {
@@ -70,32 +85,18 @@
   color: var(--color-ink-faint);
 }
 
-@media (min-width: 576px) {
-  .fr-awards__grid {
-    gap: 22px;
-  }
-
-  .fr-awards__card {
-    padding: 34px 20px;
-  }
-}
-
 @media (min-width: 768px) {
   .fr-awards__grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 30px 26px;
+  }
+  .fr-awards__card strong {
+    font-size: 1.9rem;
   }
 }
 
-@media (min-width: 992px) {
-  .fr-awards__grid {
-    gap: 26px;
-  }
-
+@media (prefers-reduced-motion: reduce) {
   .fr-awards__card {
-    padding: 36px 22px;
-  }
-
-  .fr-awards__card strong {
-    font-size: 1.7rem;
+    transform: none !important;
   }
 }
