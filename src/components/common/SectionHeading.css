@@ -23,8 +23,17 @@
 }
 
 .section-heading h2 {
-  font-size: clamp(1.9rem, 3.6vw, 2.85rem);
-  max-width: 46ch;
+  font-size: clamp(2.1rem, 4.2vw, 3.35rem);
+  line-height: 1.08;
+  max-width: 24ch;
+}
+
+.section-heading--left h2 {
+  max-width: 20ch;
+}
+
+.section-heading__desc {
+  max-width: 56ch;
 }
 
 .section-heading--center h2 {

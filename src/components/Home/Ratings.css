@@ -1,13 +1,29 @@
 .ratings {
-  padding: 30px 0 100px;
-  background: var(--color-bg);
+  position: relative;
+  padding: var(--section-pad) 0;
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 62%, var(--color-forest-dark) 130%);
+  overflow: hidden;
+}
+
+.ratings__pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1.6px, transparent 1.6px);
+  background-size: 26px 26px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ratings .container {
+  position: relative;
+  z-index: 1;
 }
 
 .ratings__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: stretch;
-  gap: 18px;
+  gap: 16px;
 }
 
 .ratings__grid > * {
@@ -21,18 +37,19 @@
   text-align: center;
   gap: 8px;
   height: 100%;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line-soft);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
   border-radius: var(--radius-md);
-  padding: 30px 18px;
+  padding: 26px 16px;
   transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium),
-    border-color var(--dur-med) var(--ease-premium);
+    background var(--dur-med) var(--ease-premium);
 }
 
 .ratings__card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-lift);
-  border-color: transparent;
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .ratings__icon {
@@ -41,26 +58,28 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: var(--color-gold-light);
-  color: var(--color-gold);
+  background: var(--color-gold);
+  color: var(--color-primary-dark);
   margin-bottom: 4px;
 }
 
 .ratings__card strong {
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--color-ink);
+  font-size: 2rem;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.01em;
 }
 
 .ratings__label {
   font-weight: 700;
   font-size: 0.92rem;
-  color: var(--color-ink);
+  color: #fff;
 }
 
 .ratings__meta {
   font-size: 0.78rem;
-  color: var(--color-ink-faint);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 @media (min-width: 576px) {

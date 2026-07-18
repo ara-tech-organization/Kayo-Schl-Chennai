@@ -8,8 +8,6 @@ import {
   FlaskConical,
   Home as HomeIcon,
   Puzzle,
-  Sparkles,
-  Star,
   TreePine,
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -108,42 +106,6 @@ export default function GalleryPreview() {
 
   return (
     <section className="gallery-preview" id="gallery">
-      <svg
-        className="gallery-preview__wave gallery-preview__wave--top"
-        viewBox="0 0 1440 100"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M0,32 C240,90 420,0 720,28 C1020,56 1200,4 1440,44 L1440,0 L0,0 Z"
-          fill="var(--color-bg)"
-        />
-      </svg>
-      <span className="gallery-preview__mesh" aria-hidden="true" />
-      <span className="gallery-preview__blob gallery-preview__blob--a" aria-hidden="true" />
-      <span className="gallery-preview__blob gallery-preview__blob--b" aria-hidden="true" />
-      <span className="gallery-preview__blob gallery-preview__blob--c" aria-hidden="true" />
-      <span className="gallery-preview__dotgrid" aria-hidden="true" />
-      <span className="gallery-preview__ring gallery-preview__ring--a" aria-hidden="true" />
-      <span className="gallery-preview__ring gallery-preview__ring--b" aria-hidden="true" />
-      <motion.span
-        className="gallery-preview__chip gallery-preview__chip--a"
-        aria-hidden="true"
-        animate={{ y: [0, -14, 0], rotate: [0, 8, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <Sparkles size={18} strokeWidth={1.8} />
-      </motion.span>
-      <motion.span
-        className="gallery-preview__chip gallery-preview__chip--b"
-        aria-hidden="true"
-        animate={{ y: [0, 12, 0], rotate: [0, -8, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-      >
-        <Star size={16} strokeWidth={1.8} />
-      </motion.span>
-      <span className="gallery-preview__curve gallery-preview__curve--bottom" aria-hidden="true" />
-
       <div className="container gallery-preview__head">
         <SectionHeading
           align="left"
@@ -210,16 +172,19 @@ export default function GalleryPreview() {
                 aria-current={isActive}
                 aria-label={img.caption}
               >
-                {img.image ? (
-                  <img
-                    src={img.image}
-                    alt={img.alt}
-                    className="gallery-preview__art gallery-preview__art-img"
-                  />
-                ) : (
-                  <ArtPanel tone={img.tone} icon={img.icon} tilt={isActive} pop={isActive} className="gallery-preview__art" />
-                )}
-                <span className="gallery-preview__caption">{img.caption}</span>
+                <span className="gallery-preview__frame" data-tone={img.tone}>
+                  <span className="gallery-preview__tape" aria-hidden="true" />
+                  {img.image ? (
+                    <img
+                      src={img.image}
+                      alt={img.alt}
+                      className="gallery-preview__art gallery-preview__art-img"
+                    />
+                  ) : (
+                    <ArtPanel tone={img.tone} icon={img.icon} tilt={isActive} pop={isActive} className="gallery-preview__art" />
+                  )}
+                  <span className="gallery-preview__caption">{img.caption}</span>
+                </span>
                 <span className="sr-only">{img.alt}</span>
               </motion.button>
             );

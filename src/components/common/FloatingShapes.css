@@ -1,0 +1,59 @@
+.floating-shapes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.fs-shape {
+  position: absolute;
+  display: block;
+  will-change: transform;
+}
+
+.fs-shape__inner {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.fs-shape svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 6px 12px rgba(38, 35, 29, 0.08));
+}
+
+/* Pure-CSS shapes: the color is applied to the inner span's background */
+.fs-shape--blob .fs-shape__inner {
+  border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%;
+  filter: blur(0.5px);
+  box-shadow: inset 0 -8px 18px rgba(255, 255, 255, 0.35);
+}
+
+.fs-shape--ring .fs-shape__inner {
+  border-radius: 50%;
+  background: transparent !important;
+  border: 12px solid currentColor;
+  color: inherit;
+}
+
+.fs-shape--dot .fs-shape__inner {
+  border-radius: 50%;
+}
+
+@media (max-width: 767.98px) {
+  /* keep decoration from crowding small screens */
+  .fs-shape {
+    transform: scale(0.72);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fs-shape__inner {
+    animation: none !important;
+  }
+}

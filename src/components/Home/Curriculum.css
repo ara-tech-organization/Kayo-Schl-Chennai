@@ -1,6 +1,7 @@
 .curriculum {
   position: relative;
-  padding: 40px 0 120px;
+  padding: clamp(32px, 6vw, 40px) 0 var(--section-pad-lg);
+  overflow: hidden;
 }
 
 .curriculum__bg {
@@ -10,8 +11,14 @@
   top: 60px;
   bottom: 0;
   background: var(--color-secondary-light);
-  border-radius: 120px 0 120px 0;
+  border-radius: 44px 20px 0 0;
   z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .curriculum__bg {
+    border-radius: 90px 32px 0 0;
+  }
 }
 
 .curriculum__grid {
@@ -24,10 +31,16 @@
 }
 
 .curriculum__visual {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.curriculum__visual-frame {
   aspect-ratio: 5 / 4;
   border-radius: var(--radius-lg, 24px);
   overflow: hidden;
   box-shadow: var(--shadow-lift);
+  border: 6px solid var(--color-surface);
 }
 
 .curriculum__visual-img {
@@ -35,6 +48,33 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform var(--dur-slow) var(--ease-premium);
+}
+
+.curriculum__visual:hover .curriculum__visual-img {
+  transform: scale(1.06);
+}
+
+.curriculum__chip {
+  position: absolute;
+  left: 20px;
+  bottom: -18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-surface);
+  color: var(--color-primary-dark);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.86rem;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lift);
+  z-index: 2;
+}
+
+.curriculum__chip svg {
+  color: var(--color-gold);
 }
 
 .curriculum__content .section-heading {
@@ -48,6 +88,7 @@
 }
 
 .curriculum__pillar {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -56,6 +97,7 @@
   padding: 20px 22px;
   box-shadow: var(--shadow-soft);
   transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium);
+  overflow: hidden;
 }
 
 .curriculum__pillar:hover {
@@ -63,7 +105,24 @@
   box-shadow: var(--shadow-lift);
 }
 
+.curriculum__pillar:hover .curriculum__pillar-icon {
+  transform: scale(1.1) rotate(-8deg);
+}
+
+.curriculum__pillar-num {
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  line-height: 1;
+  color: var(--color-secondary-light);
+  z-index: 0;
+}
+
 .curriculum__pillar-icon {
+  position: relative;
+  z-index: 1;
   flex-shrink: 0;
   width: 48px;
   height: 48px;
@@ -72,6 +131,13 @@
   place-items: center;
   background: var(--color-secondary-light);
   color: var(--color-secondary-dark);
+  transition: transform var(--dur-med) var(--ease-premium);
+}
+
+.curriculum__pillar h3,
+.curriculum__pillar p {
+  position: relative;
+  z-index: 1;
 }
 
 .curriculum__pillar h3 {

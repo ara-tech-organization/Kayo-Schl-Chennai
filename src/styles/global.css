@@ -121,7 +121,7 @@ p {
 .btn-primary:hover {
   background: var(--color-primary-dark);
   transform: translateY(-3px);
-  box-shadow: 0 16px 32px -10px rgba(238, 114, 51, 0.45);
+  box-shadow: 0 16px 32px -10px rgba(146, 43, 141, 0.5);
 }
 
 .btn-outline {
@@ -152,6 +152,49 @@ p {
 .reveal {
   opacity: 0;
   transform: translateY(28px);
+}
+
+/* ---- Top scroll-progress bar (home page premium wayfinding cue) ---- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  z-index: 200;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-orange) 40%,
+    var(--color-gold) 70%,
+    var(--color-secondary) 100%
+  );
+  border-radius: 0 3px 3px 0;
+}
+
+/* ---- Playful section band label (bolder rhythm between sections) ---- */
+.band-cream {
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+}
+
+/* ---- Shared decorative accents for section backgrounds ---- */
+.deco-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.deco-dotgrid {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(currentColor 1.6px, transparent 1.6px);
+  background-size: 20px 20px;
+  opacity: 0.16;
 }
 
 .sr-only {

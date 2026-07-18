@@ -20,12 +20,21 @@
   --color-orange-dark: #d1591f;
   --color-orange-light: #ffe4cf;
 
+  --color-forest: #2f7a3c;
+  --color-forest-dark: #1f5c2a;
+  --color-forest-light: #dcefdd;
+
   --color-ink: #26231d;
   --color-ink-soft: #5c574c;
   --color-ink-faint: #8b8577;
 
   --color-line: #ecdfcd;
   --color-line-soft: #f3ead9;
+
+  /* ---- Section rhythm: alternating warm bands so consecutive sections
+     don't all read as the same flat white block ---- */
+  --section-pad: clamp(56px, 9vw, 100px);
+  --section-pad-lg: clamp(64px, 11vw, 120px);
 
   /* ---- Type ---- */
   --font-display: "Capriola", "Poppins", "Segoe UI", sans-serif;
@@ -42,6 +51,9 @@
   --shadow-soft: 0 10px 30px -12px rgba(38, 35, 29, 0.14);
   --shadow-lift: 0 24px 60px -20px rgba(38, 35, 29, 0.24);
   --shadow-glow: 0 8px 24px -8px rgba(146, 43, 141, 0.35);
+  /* Chunky, slightly offset "sticker" shadow for the bolder playful cards */
+  --shadow-sticker: 0 18px 40px -18px rgba(38, 35, 29, 0.28);
+  --shadow-pop: 0 30px 70px -26px rgba(146, 43, 141, 0.4);
 
   /* ---- Motion ---- */
   --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);

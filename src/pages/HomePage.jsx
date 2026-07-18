@@ -1,4 +1,5 @@
 import PageLayout from "../components/layout/PageLayout";
+import ScrollProgress from "../components/common/ScrollProgress";
 import Hero from "../components/Home/Hero";
 import WhyChooseUs from "../components/Home/WhyChooseUs";
 import Programmes from "../components/Home/Programmes";
@@ -21,6 +22,7 @@ export default function HomePage() {
 
   return (
     <PageLayout>
+      <ScrollProgress />
       <Hero />
       <WhyChooseUs />
       <Programmes />

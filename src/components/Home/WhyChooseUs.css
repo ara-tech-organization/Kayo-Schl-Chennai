@@ -1,74 +1,208 @@
 .why {
   position: relative;
-  padding: 100px 0;
+  padding: var(--section-pad-lg) 0;
   background: var(--color-bg);
+  overflow: hidden;
 }
 
-.why__grid {
+.why__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.why__blob {
+  z-index: 0;
+}
+
+.why__blob--a {
+  width: 380px;
+  height: 380px;
+  top: -140px;
+  left: -120px;
+  background: radial-gradient(circle at 30% 30%, var(--color-secondary-light), transparent 70%);
+}
+
+.why__blob--b {
+  width: 320px;
+  height: 320px;
+  bottom: -120px;
+  right: -100px;
+  background: radial-gradient(circle at 60% 60%, var(--color-gold-light), transparent 70%);
+}
+
+.why__dots {
+  width: 160px;
+  height: 160px;
+  top: 12%;
+  right: 6%;
+  color: var(--color-primary);
+}
+
+.why__float {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.why__float--star {
+  top: 8%;
+  left: 3%;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: var(--color-gold-light);
+  color: var(--color-orange-dark);
+  box-shadow: var(--shadow-soft);
+}
+
+.why__float--dot {
+  bottom: 10%;
+  right: 4%;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-gold);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---- Playful sticker pin-board ---- */
+.why__board {
   display: grid;
   grid-template-columns: 1fr;
   gap: 26px;
 }
 
-.why__card {
+.why__scard {
+  --card-bg: var(--color-primary-light);
+  --card-accent: var(--color-primary-dark);
+  --card-bubble: var(--color-primary);
   position: relative;
-  background: var(--color-surface);
-  border: 1px solid var(--color-line-soft);
-  border-radius: var(--radius-md);
-  padding: 32px 28px;
+  background: var(--card-bg);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 30px;
+  padding: 42px 26px 28px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  transition: transform var(--dur-med) var(--ease-premium), box-shadow var(--dur-med) var(--ease-premium),
-    border-color var(--dur-med) var(--ease-premium);
+  gap: 12px;
+  box-shadow: var(--shadow-sticker);
+  cursor: default;
+  transform-origin: center 30%;
+  will-change: transform;
 }
 
-.why__card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lift);
-  border-color: transparent;
+.why__scard--green {
+  --card-bg: var(--color-secondary-light);
+  --card-accent: var(--color-secondary-dark);
+  --card-bubble: var(--color-secondary-dark);
 }
 
-.why__icon {
+.why__scard--gold {
+  --card-bg: var(--color-gold-light);
+  --card-accent: var(--color-orange-dark);
+  --card-bubble: var(--color-orange);
+}
+
+.why__scard--orange {
+  --card-bg: var(--color-orange-light);
+  --card-accent: var(--color-orange-dark);
+  --card-bubble: var(--color-orange-dark);
+}
+
+.why__scard--forest {
+  --card-bg: var(--color-forest-light);
+  --card-accent: var(--color-forest-dark);
+  --card-bubble: var(--color-forest);
+}
+
+/* Big playful number bubble that overlaps the corner */
+.why__scard-num {
+  position: absolute;
+  top: -18px;
+  left: -12px;
   width: 52px;
   height: 52px;
-  border-radius: 16px;
   display: grid;
   place-items: center;
-  background: var(--color-primary-light);
-  color: var(--color-primary-dark);
+  border-radius: 50%;
+  background: var(--card-bubble);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1;
+  transform: rotate(-8deg);
+  border: 3px solid var(--color-bg);
+  box-shadow: var(--shadow-soft);
 }
 
-.why__icon--c1 {
-  background: var(--color-secondary-light);
-  color: var(--color-secondary-dark);
+/* "Washi tape" strip pinning the sticker to the board */
+.why__scard-tape {
+  position: absolute;
+  top: -9px;
+  right: 30px;
+  width: 62px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px dashed rgba(38, 35, 29, 0.18);
+  transform: rotate(6deg);
+  border-radius: 3px;
 }
 
-.why__icon--c2 {
-  background: var(--color-gold-light);
-  color: var(--color-gold);
+.why__scard-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background: var(--color-surface);
+  color: var(--card-accent);
+  box-shadow: 0 10px 20px -12px rgba(38, 35, 29, 0.4);
+  margin-bottom: 2px;
 }
 
-.why__card h3 {
-  font-size: 1.14rem;
+.why__scard-icon svg {
+  width: 30px;
+  height: 30px;
 }
 
-.why__card p {
-  font-size: 0.96rem;
+.why__scard h3 {
+  font-size: 1.2rem;
+  color: var(--color-ink);
 }
 
-@media (min-width: 768px) {
-  .why__grid {
+.why__scard p {
+  font-size: 0.97rem;
+  color: var(--color-ink-soft);
+}
+
+@media (min-width: 576px) {
+  .why__board {
     grid-template-columns: repeat(2, 1fr);
+    gap: 30px 26px;
   }
 }
 
 @media (min-width: 992px) {
-  .why__grid {
+  .why__board {
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 44px 30px;
+    padding-top: 10px;
   }
-  .why__card--offset {
-    margin-top: 34px;
+
+  /* Staggered heights give the hand-placed, bouncy pin-board feel */
+  .why__scard:nth-child(3n + 2) {
+    margin-top: 48px;
+  }
+
+  .why__scard:nth-child(3n + 3) {
+    margin-top: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .why__scard {
+    transform: none !important;
   }
 }
