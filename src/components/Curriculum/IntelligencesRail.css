@@ -3,7 +3,7 @@
    ========================================================================== */
 .mi-orbit {
   position: relative;
-  padding: var(--section-pad) 0;
+  padding: var(--section-pad) 0 clamp(24px, 4vw, 44px);
   overflow: hidden;
   isolation: isolate;
   background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
@@ -324,7 +324,7 @@
 
 .mi-orbit__closing {
   max-width: 780px;
-  margin: 44px auto 0;
+  margin: 32px auto 0;
   text-align: center;
 }
 
