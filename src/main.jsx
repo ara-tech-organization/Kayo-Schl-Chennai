@@ -11,3 +11,12 @@ createRoot(document.getElementById("root")).render(
     </BrowserRouter>
   </StrictMode>,
 );
+
+// Fade out and remove the initial boot loader now that the app has mounted.
+const bootLoader = document.getElementById("app-loader");
+if (bootLoader) {
+  requestAnimationFrame(() => {
+    bootLoader.classList.add("app-loader--hidden");
+    window.setTimeout(() => bootLoader.remove(), 500);
+  });
+}

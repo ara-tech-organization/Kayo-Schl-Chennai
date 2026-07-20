@@ -169,9 +169,65 @@
         "knowsAbout": ["Montessori Education", "STEM Early Learning", "Child Psychology", "Daycare Services", "Multiple Intelligence Theory"]
       }
     </script>
+
+    <!-- Initial boot loader: shown instantly while the JS bundle downloads and
+         React mounts (covers the blank-white gap on first load / GitHub Pages).
+         Self-contained (no fonts/tokens needed) and removed by src/main.jsx. -->
+    <style>
+      #app-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        background: linear-gradient(180deg, #ffffff 0%, #f4eee5 100%);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        transition: opacity 0.45s ease, visibility 0.45s ease;
+      }
+      #app-loader.app-loader--hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      #app-loader .al-dots {
+        display: flex;
+        gap: 12px;
+      }
+      #app-loader .al-dots span {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        animation: al-bounce 0.9s ease-in-out infinite;
+      }
+      #app-loader .al-dots span:nth-child(1) { background: #922b8d; animation-delay: 0s; }
+      #app-loader .al-dots span:nth-child(2) { background: #9ccb3b; animation-delay: 0.12s; }
+      #app-loader .al-dots span:nth-child(3) { background: #f8bc26; animation-delay: 0.24s; }
+      #app-loader .al-dots span:nth-child(4) { background: #ee7233; animation-delay: 0.36s; }
+      #app-loader .al-name {
+        font-size: 0.98rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #6e1f6a;
+      }
+      @keyframes al-bounce {
+        0%, 100% { transform: translateY(0); opacity: 0.55; }
+        50% { transform: translateY(-14px); opacity: 1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #app-loader .al-dots span { animation: none; }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
+    <div id="app-loader" role="status" aria-label="Loading Kayo International">
+      <div class="al-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      <div class="al-name">Kayo International</div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
